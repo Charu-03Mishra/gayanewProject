@@ -1,0 +1,106 @@
+/**=====================
+  2.24 Print CSS Start
+==========================**/
+@media print {
+	.sidebar-wrapper,
+	.page-header {
+		display: none;
+	}
+
+	.page-body {
+		margin: 0 !important;
+		position: relative;
+	}
+
+	.page-wrapper {
+		.page-title {
+			visibility: hidden;
+		}
+
+		.page-body-wrapper {
+			.page-title {
+				display: none;
+			}
+		}
+
+		&.compact-wrapper {
+			.page-body-wrapper {
+				.page-body {
+					margin: 0;
+				}
+			}
+		}
+	}
+
+	table.fixedHeader-floating {
+		display: none;
+	}
+
+	// letter-box
+	.email-left-aside {
+		display: none;
+	}
+
+	.footer {
+		display: none;
+	}
+}
+
+.invoice-table {
+	margin-top: 16px;
+	margin-bottom: 16px;
+}
+
+.invoice {
+	.text-right {
+		input {
+			margin-top: 6px;
+		}
+	}
+
+	.d-flex {
+		align-items: center;
+	}
+}
+
+.help p{
+	font-size: 18px;
+	font-weight: 700;
+	margin-left: -30px;
+	
+}
+.whatsapp-pop {
+	position: fixed;
+	right: 1%;
+	bottom: 1%;
+	z-index: 10000;
+}
+.whatsapp {
+	animation: bounce 2s infinite;
+}
+.whatsapp-Imag img {
+	width: 3vw;
+	height: 3vw;
+}
+
+/* Bounce animation */
+@keyframes bounce {
+	0%,
+	20%,
+	50%,
+	80%,
+	100% {
+		transform: translateY(0);
+	}
+	40% {
+		transform: translateY(-10px);
+	}
+	60% {
+		transform: translateY(-3px);
+	}
+}
+
+
+/**=====================
+  2.24 Print CSS Ends
+==========================**/

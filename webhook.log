@@ -1,0 +1,2782 @@
+Time: 2024-06-06T11:42:14.340Z
+{
+  "entity": "event",
+  "account_id": "acc_H153XGJVqCRd5a",
+  "event": "payment.captured",
+  "contains": [
+    "payment"
+  ],
+  "payload": {
+    "payment": {
+      "entity": {
+        "id": "pay_OEHKmuuqNGHLRR",
+        "entity": "payment",
+        "amount": 377600,
+        "currency": "INR",
+        "status": "captured",
+        "order_id": "order_OJL2eL7YInpSF8",
+        "method": "upi",
+        "captured": true,
+        "description": "Meeting Fees",
+        "notes": {
+          "type": "meeting_fees",
+          "remark": "BNI Meeting Fees",
+          "chapter_id": 7
+        },
+        "fee": 0,
+        "tax": 0,
+        "error_code": null,
+        "error_description": null,
+        "error_source": null,
+        "error_step": null,
+        "error_reason": null,
+        "acquirer_data": {
+          "rrn": "461052930688",
+          "upi_transaction_id": "17F442C1E3566D7711821895A631626C"
+        },
+        "created_at": 1716542287,
+        "reward": null,
+        "late_authorized": false,
+        "upi": {
+          "vpa": "success@rbl"
+        },
+        "base_amount": 377600
+      }
+    }
+  },
+  "created_at": 1716542288
+}
+
+Time: 2024-06-06T13:17:24.187Z
+{
+  "entity": "event",
+  "account_id": "acc_H153XGJVqCRd5a",
+  "event": "payment.captured",
+  "contains": [
+    "payment"
+  ],
+  "payload": {
+    "payment": {
+      "entity": {
+        "id": "pay_OJULe0H5fzMLdx",
+        "entity": "payment",
+        "amount": 94400,
+        "currency": "INR",
+        "base_amount": 94400,
+        "status": "captured",
+        "order_id": "order_OJUKqoDLQ7sESM",
+        "invoice_id": null,
+        "international": false,
+        "method": "upi",
+        "amount_refunded": 0,
+        "amount_transferred": 0,
+        "refund_status": null,
+        "captured": true,
+        "description": "Visitor Fees Payment",
+        "card_id": null,
+        "bank": null,
+        "wallet": null,
+        "vpa": "abhijitbisoi4628@okicici",
+        "email": "abhijitbisoi4628@gmail.com",
+        "contact": "+916356146306",
+        "notes": {
+          "chapter_id": "32",
+          "gstin": "",
+          "member_email": "abhijitbisoi4628@gmail.com",
+          "member_name": "Abhijit Bisoi",
+          "member_phone": "6356146306",
+          "remark": "BNI Chapter Visitor Fees",
+          "type": "visitor_fees"
+        },
+        "fee": 0,
+        "tax": 0,
+        "error_code": null,
+        "error_description": null,
+        "error_source": null,
+        "error_step": null,
+        "error_reason": null,
+        "acquirer_data": {
+          "rrn": "415841703764"
+        },
+        "created_at": 1717679817,
+        "provider": null,
+        "upi": {
+          "payer_account_type": "bank_account",
+          "vpa": "abhijitbisoi4628@okicici"
+        },
+        "reward": null,
+        "late_authorized": false
+      }
+    }
+  },
+  "created_at": 1717679843
+}
+
+Time: 2024-06-06T13:46:54.447Z
+{
+  "entity": "event",
+  "account_id": "acc_H153XGJVqCRd5a",
+  "event": "payment.captured",
+  "contains": [
+    "payment"
+  ],
+  "payload": {
+    "payment": {
+      "entity": {
+        "id": "pay_OJUoBzQXTVgXNT",
+        "entity": "payment",
+        "amount": 96070,
+        "currency": "INR",
+        "status": "captured",
+        "order_id": "order_OJUo0hisTXGPun",
+        "invoice_id": null,
+        "international": false,
+        "method": "netbanking",
+        "amount_refunded": 0,
+        "refund_status": null,
+        "captured": true,
+        "description": "Visitor Fees Payment",
+        "card_id": null,
+        "bank": "ICIC",
+        "wallet": null,
+        "vpa": null,
+        "email": "finjpsm@gmail.com",
+        "contact": "+919824120285",
+        "notes": {
+          "type": "visitor_fees",
+          "gstin": "",
+          "remark": "BNI Chapter Visitor Fees",
+          "chapter_id": "1",
+          "member_name": "Jitendra Shah",
+          "member_email": "finjpsm@gmail.com",
+          "member_phone": "9824120285"
+        },
+        "fee": 1670,
+        "tax": 254,
+        "error_code": null,
+        "error_description": null,
+        "error_source": null,
+        "error_step": null,
+        "error_reason": null,
+        "acquirer_data": {
+          "bank_transaction_id": "0852094142"
+        },
+        "created_at": 1717681439,
+        "reward": null,
+        "late_authorized": false,
+        "base_amount": 96070
+      }
+    }
+  },
+  "created_at": 1717681614
+}
+
+Time: 2024-06-06T15:23:19.386Z
+{
+  "entity": "event",
+  "account_id": "acc_H153XGJVqCRd5a",
+  "event": "payment.captured",
+  "contains": [
+    "payment"
+  ],
+  "payload": {
+    "payment": {
+      "entity": {
+        "id": "pay_OJWUmeDfvaGxq3",
+        "entity": "payment",
+        "amount": 94400,
+        "currency": "INR",
+        "base_amount": 94400,
+        "status": "captured",
+        "order_id": "order_OJWUZB3liib2iz",
+        "invoice_id": null,
+        "international": false,
+        "method": "upi",
+        "amount_refunded": 0,
+        "amount_transferred": 0,
+        "refund_status": null,
+        "captured": true,
+        "description": "Visitor Fees Payment",
+        "card_id": null,
+        "bank": null,
+        "wallet": null,
+        "vpa": "9638671486@pthdfc",
+        "email": "himanshupanigrahi2002@gmail.com",
+        "contact": "+919016268917",
+        "notes": {
+          "chapter_id": "32",
+          "gstin": "",
+          "member_email": "himanshupanigrahi2002@gmail.com",
+          "member_name": "Himanshu Panigrahi",
+          "member_phone": "9016268917",
+          "remark": "BNI Chapter Visitor Fees",
+          "type": "visitor_fees"
+        },
+        "fee": 0,
+        "tax": 0,
+        "error_code": null,
+        "error_description": null,
+        "error_source": null,
+        "error_step": null,
+        "error_reason": null,
+        "acquirer_data": {
+          "rrn": "415826820494"
+        },
+        "created_at": 1717687379,
+        "provider": null,
+        "upi": {
+          "payer_account_type": "bank_account",
+          "vpa": "9638671486@pthdfc"
+        },
+        "reward": null,
+        "late_authorized": false
+      }
+    }
+  },
+  "created_at": 1717687398
+}
+
+Time: 2024-06-07T02:03:28.600Z
+{
+  "entity": "event",
+  "account_id": "acc_H153XGJVqCRd5a",
+  "event": "payment.captured",
+  "contains": [
+    "payment"
+  ],
+  "payload": {
+    "payment": {
+      "entity": {
+        "id": "pay_OJhP7cLHLSzpmH",
+        "entity": "payment",
+        "amount": 94400,
+        "currency": "INR",
+        "base_amount": 94400,
+        "status": "captured",
+        "order_id": "order_OJhOwB6RTYxIDU",
+        "invoice_id": null,
+        "international": false,
+        "method": "upi",
+        "amount_refunded": 0,
+        "amount_transferred": 0,
+        "refund_status": null,
+        "captured": true,
+        "description": "Visitor Fees Payment",
+        "card_id": null,
+        "bank": null,
+        "wallet": null,
+        "vpa": "vaghani.shree@oksbi",
+        "email": "vaghani.shree@gmail.com",
+        "contact": "+919537764591",
+        "notes": {
+          "chapter_id": "12",
+          "gstin": "",
+          "member_email": "vaghani.shree@gmail.com",
+          "member_name": "Bhagyashreeben Sandipkumar Dhameliya",
+          "member_phone": "+919537764591",
+          "remark": "BNI Chapter Visitor Fees",
+          "type": "visitor_fees"
+        },
+        "fee": 0,
+        "tax": 0,
+        "error_code": null,
+        "error_description": null,
+        "error_source": null,
+        "error_step": null,
+        "error_reason": null,
+        "acquirer_data": {
+          "rrn": "415964133232"
+        },
+        "created_at": 1717725795,
+        "provider": null,
+        "upi": {
+          "payer_account_type": "bank_account",
+          "vpa": "vaghani.shree@oksbi"
+        },
+        "reward": null,
+        "late_authorized": false
+      }
+    }
+  },
+  "created_at": 1717725807
+}
+
+Time: 2024-06-07T02:03:59.867Z
+{
+  "entity": "event",
+  "account_id": "acc_H153XGJVqCRd5a",
+  "event": "payment.captured",
+  "contains": [
+    "payment"
+  ],
+  "payload": {
+    "payment": {
+      "entity": {
+        "id": "pay_OJhPN4xrpAjys0",
+        "entity": "payment",
+        "amount": 94400,
+        "currency": "INR",
+        "base_amount": 94400,
+        "status": "captured",
+        "order_id": "order_OJhPBcxgvgoe5D",
+        "invoice_id": null,
+        "international": false,
+        "method": "upi",
+        "amount_refunded": 0,
+        "amount_transferred": 0,
+        "refund_status": null,
+        "captured": true,
+        "description": "Visitor Fees Payment",
+        "card_id": null,
+        "bank": null,
+        "wallet": null,
+        "vpa": "9825212377@axl",
+        "email": "sandip@artonest.com",
+        "contact": "+919825212377",
+        "notes": {
+          "chapter_id": "12",
+          "gstin": "",
+          "member_email": "sandip@artonest.com",
+          "member_name": "Sandip Dhameliya",
+          "member_phone": "9825212377",
+          "remark": "BNI Chapter Visitor Fees",
+          "type": "visitor_fees"
+        },
+        "fee": 0,
+        "tax": 0,
+        "error_code": null,
+        "error_description": null,
+        "error_source": null,
+        "error_step": null,
+        "error_reason": null,
+        "acquirer_data": {
+          "rrn": "415925443282"
+        },
+        "created_at": 1717725809,
+        "provider": null,
+        "upi": {
+          "payer_account_type": "bank_account",
+          "vpa": "9825212377@axl"
+        },
+        "reward": null,
+        "late_authorized": false
+      }
+    }
+  },
+  "created_at": 1717725836
+}
+
+Time: 2024-06-07T02:04:15.228Z
+{
+  "entity": "event",
+  "account_id": "acc_H153XGJVqCRd5a",
+  "event": "payment.captured",
+  "contains": [
+    "payment"
+  ],
+  "payload": {
+    "payment": {
+      "entity": {
+        "id": "pay_OJhQ049HGGnV01",
+        "entity": "payment",
+        "amount": 94400,
+        "currency": "INR",
+        "base_amount": 94400,
+        "status": "captured",
+        "order_id": "order_OJhPs2dJlbu0zx",
+        "invoice_id": null,
+        "international": false,
+        "method": "upi",
+        "amount_refunded": 0,
+        "amount_transferred": 0,
+        "refund_status": null,
+        "captured": true,
+        "description": "Visitor Fees Payment",
+        "card_id": null,
+        "bank": null,
+        "wallet": null,
+        "vpa": "vaghani.shree@oksbi",
+        "email": "vaghani.shree@gmail.com",
+        "contact": "+919537764591",
+        "notes": {
+          "chapter_id": "12",
+          "gstin": "",
+          "member_email": "vaghani.shree@gmail.com",
+          "member_name": "Parin sonani ",
+          "member_phone": "+919537764591",
+          "remark": "BNI Chapter Visitor Fees",
+          "type": "visitor_fees"
+        },
+        "fee": 0,
+        "tax": 0,
+        "error_code": null,
+        "error_description": null,
+        "error_source": null,
+        "error_step": null,
+        "error_reason": null,
+        "acquirer_data": {
+          "rrn": "415964146273"
+        },
+        "created_at": 1717725845,
+        "provider": null,
+        "upi": {
+          "payer_account_type": "bank_account",
+          "vpa": "vaghani.shree@oksbi"
+        },
+        "reward": null,
+        "late_authorized": false
+      }
+    }
+  },
+  "created_at": 1717725854
+}
+
+Time: 2024-06-07T06:39:21.804Z
+{
+  "entity": "event",
+  "account_id": "acc_H153XGJVqCRd5a",
+  "event": "payment.captured",
+  "contains": [
+    "payment"
+  ],
+  "payload": {
+    "payment": {
+      "entity": {
+        "id": "pay_OEHKmuuqNGHLRR",
+        "entity": "payment",
+        "amount": 472000,
+        "currency": "INR",
+        "status": "captured",
+        "order_id": "order_OIaVuFasgmvdoq",
+        "method": "upi",
+        "captured": true,
+        "description": "CDPS",
+        "notes": {
+          "type": "CDPS_fees",
+          "remark": "CDPS Fees",
+          "chapter_id": 32
+        },
+        "fee": 0,
+        "tax": 0,
+        "error_code": null,
+        "error_description": null,
+        "error_source": null,
+        "error_step": null,
+        "error_reason": null,
+        "acquirer_data": {
+          "rrn": "461052930688",
+          "upi_transaction_id": "17F442C1E3566D7711821895A631626C"
+        },
+        "created_at": 1716542287,
+        "reward": null,
+        "late_authorized": false,
+        "upi": {
+          "vpa": "success@rbl"
+        },
+        "base_amount": 472000
+      }
+    }
+  },
+  "created_at": 1716542288
+}
+
+Time: 2024-06-07T08:19:33.564Z
+{
+  "entity": "event",
+  "account_id": "acc_H153XGJVqCRd5a",
+  "event": "payment.captured",
+  "contains": [
+    "payment"
+  ],
+  "payload": {
+    "payment": {
+      "entity": {
+        "id": "pay_OJnoKYDR8XYEeH",
+        "entity": "payment",
+        "amount": 472000,
+        "currency": "INR",
+        "base_amount": 472000,
+        "status": "captured",
+        "order_id": "order_OJnnq6AkOuanP4",
+        "invoice_id": null,
+        "international": false,
+        "method": "upi",
+        "amount_refunded": 0,
+        "amount_transferred": 0,
+        "refund_status": null,
+        "captured": true,
+        "description": "CDPS Payment",
+        "card_id": null,
+        "bank": null,
+        "wallet": null,
+        "vpa": "jcrishikabhatnagar@oksbi",
+        "email": "meenakshi_bhatnagar23@yahoo.com",
+        "contact": "+919376914112",
+        "notes": {
+          "chapter_id": 11,
+          "gstin": "24AGHPB8279M1ZZ",
+          "member_email": "meenakshi_bhatnagar23@yahoo.com",
+          "member_name": "MEENAKSHI BHATNAGAR",
+          "member_phone": 9376914112,
+          "remark": "BNI CDPS Fees",
+          "type": "CDPS_fees"
+        },
+        "fee": 0,
+        "tax": 0,
+        "error_code": null,
+        "error_description": null,
+        "error_source": null,
+        "error_step": null,
+        "error_reason": null,
+        "acquirer_data": {
+          "rrn": "415981234947"
+        },
+        "created_at": 1717748357,
+        "provider": null,
+        "upi": {
+          "payer_account_type": "bank_account",
+          "vpa": "jcrishikabhatnagar@oksbi"
+        },
+        "reward": null,
+        "late_authorized": false
+      }
+    }
+  },
+  "created_at": 1717748372
+}
+
+Time: 2024-06-07T09:53:50.482Z
+{
+  "entity": "event",
+  "account_id": "acc_H153XGJVqCRd5a",
+  "event": "payment.captured",
+  "contains": [
+    "payment"
+  ],
+  "payload": {
+    "payment": {
+      "entity": {
+        "id": "pay_OJpPZnSouDfQBP",
+        "entity": "payment",
+        "amount": 2516668,
+        "currency": "INR",
+        "status": "captured",
+        "order_id": "order_OJpN1hFP1y6TVB",
+        "invoice_id": null,
+        "international": false,
+        "method": "emi",
+        "amount_refunded": 0,
+        "refund_status": null,
+        "captured": true,
+        "description": "Meeting Fees Payment",
+        "card_id": "card_OJpPbZWYo5XkuC",
+        "card": {
+          "id": "card_OJpPbZWYo5XkuC",
+          "entity": "card",
+          "name": "",
+          "last4": "4703",
+          "network": "MasterCard",
+          "type": "credit",
+          "issuer": "IDFB",
+          "international": false,
+          "emi": true,
+          "sub_type": "consumer",
+          "token_iin": "559876979"
+        },
+        "bank": "IDFB",
+        "wallet": null,
+        "vpa": null,
+        "email": "sameer@franchiseinsider.in",
+        "contact": "+919377733467",
+        "token_id": "token_NI6hg6cECT7EU5",
+        "notes": {
+          "type": "meeting_fees",
+          "gstin": "24AAKCC1699L1Z6",
+          "end_at": "2024-09-29",
+          "remark": "BNI Meeting Fees",
+          "start_at": "2024-03-29",
+          "chapter_id": 1,
+          "member_name": "SAMEER DESAI",
+          "member_email": "sameer@franchiseinsider.in",
+          "member_phone": 9377733467
+        },
+        "fee": 62268,
+        "tax": 9498,
+        "error_code": null,
+        "error_description": null,
+        "error_source": null,
+        "error_step": null,
+        "error_reason": null,
+        "acquirer_data": {
+          "auth_code": "060959",
+          "rrn": "003754579575"
+        },
+        "emi": {
+          "issuer": "IDFB",
+          "type": "credit",
+          "rate": 1500,
+          "duration": 6
+        },
+        "emi_plan": {
+          "issuer": "IDFB",
+          "type": "credit",
+          "rate": 1500,
+          "duration": 6
+        },
+        "created_at": 1717753996,
+        "reward": null,
+        "late_authorized": false,
+        "base_amount": 2516668
+      }
+    }
+  },
+  "created_at": 1717754029
+}
+
+Time: 2024-06-07T10:12:46.565Z
+{
+  "entity": "event",
+  "account_id": "acc_H153XGJVqCRd5a",
+  "event": "payment.captured",
+  "contains": [
+    "payment"
+  ],
+  "payload": {
+    "payment": {
+      "entity": {
+        "id": "pay_OJpPZnSouDfQBP",
+        "entity": "payment",
+        "amount": 2516668,
+        "currency": "INR",
+        "status": "captured",
+        "order_id": "order_OJpN1hFP1y6TVB",
+        "invoice_id": null,
+        "international": false,
+        "method": "emi",
+        "amount_refunded": 0,
+        "refund_status": null,
+        "captured": true,
+        "description": "Meeting Fees Payment",
+        "card_id": "card_OJpPbZWYo5XkuC",
+        "card": {
+          "id": "card_OJpPbZWYo5XkuC",
+          "entity": "card",
+          "name": "",
+          "last4": "4703",
+          "network": "MasterCard",
+          "type": "credit",
+          "issuer": "IDFB",
+          "international": false,
+          "emi": true,
+          "sub_type": "consumer",
+          "token_iin": "559876979"
+        },
+        "bank": "IDFB",
+        "wallet": null,
+        "vpa": null,
+        "email": "sameer@franchiseinsider.in",
+        "contact": "+919377733467",
+        "token_id": "token_NI6hg6cECT7EU5",
+        "notes": {
+          "type": "meeting_fees",
+          "gstin": "24AAKCC1699L1Z6",
+          "end_at": "2024-09-29",
+          "remark": "BNI Meeting Fees",
+          "start_at": "2024-03-29",
+          "chapter_id": 1,
+          "member_name": "SAMEER DESAI",
+          "member_email": "sameer@franchiseinsider.in",
+          "member_phone": 9377733467
+        },
+        "fee": 62268,
+        "tax": 9498,
+        "error_code": null,
+        "error_description": null,
+        "error_source": null,
+        "error_step": null,
+        "error_reason": null,
+        "acquirer_data": {
+          "auth_code": "060959",
+          "rrn": "003754579575"
+        },
+        "emi": {
+          "issuer": "IDFB",
+          "type": "credit",
+          "rate": 1500,
+          "duration": 6
+        },
+        "emi_plan": {
+          "issuer": "IDFB",
+          "type": "credit",
+          "rate": 1500,
+          "duration": 6
+        },
+        "created_at": 1717753996,
+        "reward": null,
+        "late_authorized": false,
+        "base_amount": 2516668
+      }
+    }
+  },
+  "created_at": 1717754029
+}
+
+Time: 2024-06-07T10:13:18.038Z
+{
+  "entity": "event",
+  "account_id": "acc_H153XGJVqCRd5a",
+  "event": "payment.captured",
+  "contains": [
+    "payment"
+  ],
+  "payload": {
+    "payment": {
+      "entity": {
+        "id": "pay_OJpkVxG2fJtSiy",
+        "entity": "payment",
+        "amount": 2454400,
+        "currency": "INR",
+        "base_amount": 2454400,
+        "status": "captured",
+        "order_id": "order_OJpkBSMsTCkRK7",
+        "invoice_id": null,
+        "international": false,
+        "method": "upi",
+        "amount_refunded": 0,
+        "amount_transferred": 0,
+        "refund_status": null,
+        "captured": true,
+        "description": "Meeting Fees Payment",
+        "card_id": null,
+        "bank": null,
+        "wallet": null,
+        "vpa": "sam.desai143@okhdfcbank",
+        "email": "sam.desai143@gmail.com",
+        "contact": "+919909317297",
+        "notes": {
+          "chapter_id": 17,
+          "end_at": "2024-09-26",
+          "gstin": "24ABZPD0972C1ZJ",
+          "member_email": "sam.desai143@gmail.com",
+          "member_name": "Sohil Desai",
+          "member_phone": 9909317297,
+          "remark": "BNI Meeting Fees",
+          "start_at": "2024-03-26",
+          "type": "meeting_fees"
+        },
+        "fee": 0,
+        "tax": 0,
+        "error_code": null,
+        "error_description": null,
+        "error_source": null,
+        "error_step": null,
+        "error_reason": null,
+        "acquirer_data": {
+          "rrn": "415959435239"
+        },
+        "created_at": 1717755183,
+        "provider": null,
+        "upi": {
+          "payer_account_type": "bank_account",
+          "vpa": "sam.desai143@okhdfcbank"
+        },
+        "reward": null,
+        "late_authorized": false
+      }
+    }
+  },
+  "created_at": 1717755197
+}
+
+Time: 2024-06-07T10:15:48.688Z
+{
+  "entity": "event",
+  "account_id": "acc_H153XGJVqCRd5a",
+  "event": "payment.captured",
+  "contains": [
+    "payment"
+  ],
+  "payload": {
+    "payment": {
+      "entity": {
+        "id": "pay_OJpn51zAsKG8j6",
+        "entity": "payment",
+        "amount": 94400,
+        "currency": "INR",
+        "base_amount": 94400,
+        "status": "captured",
+        "order_id": "order_OJpm4mBTsCzp1X",
+        "invoice_id": null,
+        "international": false,
+        "method": "upi",
+        "amount_refunded": 0,
+        "amount_transferred": 0,
+        "refund_status": null,
+        "captured": true,
+        "description": "Visitor Fees Payment",
+        "card_id": null,
+        "bank": null,
+        "wallet": null,
+        "vpa": "navdeeplakkad@ybl",
+        "email": "lakkadnavdeep@gmail.com",
+        "contact": "+919979359013",
+        "notes": {
+          "chapter_id": "11",
+          "gstin": "24ACDFA1707D1Z5",
+          "member_email": "lakkadnavdeep@gmail.com",
+          "member_name": "Navdeep Lakkad",
+          "member_phone": "9979359013",
+          "remark": "BNI Chapter Visitor Fees",
+          "type": "visitor_fees"
+        },
+        "fee": 0,
+        "tax": 0,
+        "error_code": null,
+        "error_description": null,
+        "error_source": null,
+        "error_step": null,
+        "error_reason": null,
+        "acquirer_data": {
+          "rrn": "415926313628"
+        },
+        "created_at": 1717755329,
+        "provider": null,
+        "upi": {
+          "payer_account_type": "bank_account",
+          "vpa": "navdeeplakkad@ybl"
+        },
+        "reward": null,
+        "late_authorized": false
+      }
+    }
+  },
+  "created_at": 1717755348
+}
+
+Time: 2024-06-07T10:34:56.365Z
+{
+  "entity": "event",
+  "account_id": "acc_H153XGJVqCRd5a",
+  "event": "payment.captured",
+  "contains": [
+    "payment"
+  ],
+  "payload": {
+    "payment": {
+      "entity": {
+        "id": "pay_OJpPZnSouDfQBP",
+        "entity": "payment",
+        "amount": 2516668,
+        "currency": "INR",
+        "status": "captured",
+        "order_id": "order_OJpN1hFP1y6TVB",
+        "invoice_id": null,
+        "international": false,
+        "method": "emi",
+        "amount_refunded": 0,
+        "refund_status": null,
+        "captured": true,
+        "description": "Meeting Fees Payment",
+        "card_id": "card_OJpPbZWYo5XkuC",
+        "card": {
+          "id": "card_OJpPbZWYo5XkuC",
+          "entity": "card",
+          "name": "",
+          "last4": "4703",
+          "network": "MasterCard",
+          "type": "credit",
+          "issuer": "IDFB",
+          "international": false,
+          "emi": true,
+          "sub_type": "consumer",
+          "token_iin": "559876979"
+        },
+        "bank": "IDFB",
+        "wallet": null,
+        "vpa": null,
+        "email": "sameer@franchiseinsider.in",
+        "contact": "+919377733467",
+        "token_id": "token_NI6hg6cECT7EU5",
+        "notes": {
+          "type": "meeting_fees",
+          "gstin": "24AAKCC1699L1Z6",
+          "end_at": "2024-09-29",
+          "remark": "BNI Meeting Fees",
+          "start_at": "2024-03-29",
+          "chapter_id": 1,
+          "member_name": "SAMEER DESAI",
+          "member_email": "sameer@franchiseinsider.in",
+          "member_phone": 9377733467
+        },
+        "fee": 62268,
+        "tax": 9498,
+        "error_code": null,
+        "error_description": null,
+        "error_source": null,
+        "error_step": null,
+        "error_reason": null,
+        "acquirer_data": {
+          "auth_code": "060959",
+          "rrn": "003754579575"
+        },
+        "emi": {
+          "issuer": "IDFB",
+          "type": "credit",
+          "rate": 1500,
+          "duration": 6
+        },
+        "emi_plan": {
+          "issuer": "IDFB",
+          "type": "credit",
+          "rate": 1500,
+          "duration": 6
+        },
+        "created_at": 1717753996,
+        "reward": null,
+        "late_authorized": false,
+        "base_amount": 2516668
+      }
+    }
+  },
+  "created_at": 1717754029
+}
+
+Time: 2024-06-07T10:35:24.975Z
+{
+  "entity": "event",
+  "account_id": "acc_H153XGJVqCRd5a",
+  "event": "payment.captured",
+  "contains": [
+    "payment"
+  ],
+  "payload": {
+    "payment": {
+      "entity": {
+        "id": "pay_OJpkVxG2fJtSiy",
+        "entity": "payment",
+        "amount": 2454400,
+        "currency": "INR",
+        "base_amount": 2454400,
+        "status": "captured",
+        "order_id": "order_OJpkBSMsTCkRK7",
+        "invoice_id": null,
+        "international": false,
+        "method": "upi",
+        "amount_refunded": 0,
+        "amount_transferred": 0,
+        "refund_status": null,
+        "captured": true,
+        "description": "Meeting Fees Payment",
+        "card_id": null,
+        "bank": null,
+        "wallet": null,
+        "vpa": "sam.desai143@okhdfcbank",
+        "email": "sam.desai143@gmail.com",
+        "contact": "+919909317297",
+        "notes": {
+          "chapter_id": 17,
+          "end_at": "2024-09-26",
+          "gstin": "24ABZPD0972C1ZJ",
+          "member_email": "sam.desai143@gmail.com",
+          "member_name": "Sohil Desai",
+          "member_phone": 9909317297,
+          "remark": "BNI Meeting Fees",
+          "start_at": "2024-03-26",
+          "type": "meeting_fees"
+        },
+        "fee": 0,
+        "tax": 0,
+        "error_code": null,
+        "error_description": null,
+        "error_source": null,
+        "error_step": null,
+        "error_reason": null,
+        "acquirer_data": {
+          "rrn": "415959435239"
+        },
+        "created_at": 1717755183,
+        "provider": null,
+        "upi": {
+          "payer_account_type": "bank_account",
+          "vpa": "sam.desai143@okhdfcbank"
+        },
+        "reward": null,
+        "late_authorized": false
+      }
+    }
+  },
+  "created_at": 1717755197
+}
+
+Time: 2024-06-07T11:03:47.942Z
+{
+  "entity": "event",
+  "account_id": "acc_H153XGJVqCRd5a",
+  "event": "payment.captured",
+  "contains": [
+    "payment"
+  ],
+  "payload": {
+    "payment": {
+      "entity": {
+        "id": "pay_OJpPZnSouDfQBP",
+        "entity": "payment",
+        "amount": 2516668,
+        "currency": "INR",
+        "status": "captured",
+        "order_id": "order_OJpN1hFP1y6TVB",
+        "invoice_id": null,
+        "international": false,
+        "method": "emi",
+        "amount_refunded": 0,
+        "refund_status": null,
+        "captured": true,
+        "description": "Meeting Fees Payment",
+        "card_id": "card_OJpPbZWYo5XkuC",
+        "card": {
+          "id": "card_OJpPbZWYo5XkuC",
+          "entity": "card",
+          "name": "",
+          "last4": "4703",
+          "network": "MasterCard",
+          "type": "credit",
+          "issuer": "IDFB",
+          "international": false,
+          "emi": true,
+          "sub_type": "consumer",
+          "token_iin": "559876979"
+        },
+        "bank": "IDFB",
+        "wallet": null,
+        "vpa": null,
+        "email": "sameer@franchiseinsider.in",
+        "contact": "+919377733467",
+        "token_id": "token_NI6hg6cECT7EU5",
+        "notes": {
+          "type": "meeting_fees",
+          "gstin": "24AAKCC1699L1Z6",
+          "end_at": "2024-09-29",
+          "remark": "BNI Meeting Fees",
+          "start_at": "2024-03-29",
+          "chapter_id": 1,
+          "member_name": "SAMEER DESAI",
+          "member_email": "sameer@franchiseinsider.in",
+          "member_phone": 9377733467
+        },
+        "fee": 62268,
+        "tax": 9498,
+        "error_code": null,
+        "error_description": null,
+        "error_source": null,
+        "error_step": null,
+        "error_reason": null,
+        "acquirer_data": {
+          "auth_code": "060959",
+          "rrn": "003754579575"
+        },
+        "emi": {
+          "issuer": "IDFB",
+          "type": "credit",
+          "rate": 1500,
+          "duration": 6
+        },
+        "emi_plan": {
+          "issuer": "IDFB",
+          "type": "credit",
+          "rate": 1500,
+          "duration": 6
+        },
+        "created_at": 1717753996,
+        "reward": null,
+        "late_authorized": false,
+        "base_amount": 2516668
+      }
+    }
+  },
+  "created_at": 1717754029
+}
+
+Time: 2024-06-07T11:04:04.033Z
+{
+  "entity": "event",
+  "account_id": "acc_H153XGJVqCRd5a",
+  "event": "payment.captured",
+  "contains": [
+    "payment"
+  ],
+  "payload": {
+    "payment": {
+      "entity": {
+        "id": "pay_OJpkVxG2fJtSiy",
+        "entity": "payment",
+        "amount": 2454400,
+        "currency": "INR",
+        "base_amount": 2454400,
+        "status": "captured",
+        "order_id": "order_OJpkBSMsTCkRK7",
+        "invoice_id": null,
+        "international": false,
+        "method": "upi",
+        "amount_refunded": 0,
+        "amount_transferred": 0,
+        "refund_status": null,
+        "captured": true,
+        "description": "Meeting Fees Payment",
+        "card_id": null,
+        "bank": null,
+        "wallet": null,
+        "vpa": "sam.desai143@okhdfcbank",
+        "email": "sam.desai143@gmail.com",
+        "contact": "+919909317297",
+        "notes": {
+          "chapter_id": 17,
+          "end_at": "2024-09-26",
+          "gstin": "24ABZPD0972C1ZJ",
+          "member_email": "sam.desai143@gmail.com",
+          "member_name": "Sohil Desai",
+          "member_phone": 9909317297,
+          "remark": "BNI Meeting Fees",
+          "start_at": "2024-03-26",
+          "type": "meeting_fees"
+        },
+        "fee": 0,
+        "tax": 0,
+        "error_code": null,
+        "error_description": null,
+        "error_source": null,
+        "error_step": null,
+        "error_reason": null,
+        "acquirer_data": {
+          "rrn": "415959435239"
+        },
+        "created_at": 1717755183,
+        "provider": null,
+        "upi": {
+          "payer_account_type": "bank_account",
+          "vpa": "sam.desai143@okhdfcbank"
+        },
+        "reward": null,
+        "late_authorized": false
+      }
+    }
+  },
+  "created_at": 1717755197
+}
+
+Time: 2024-06-07T11:33:14.332Z
+{
+  "entity": "event",
+  "account_id": "acc_H153XGJVqCRd5a",
+  "event": "payment.captured",
+  "contains": [
+    "payment"
+  ],
+  "payload": {
+    "payment": {
+      "entity": {
+        "id": "pay_OJpkVxG2fJtSiy",
+        "entity": "payment",
+        "amount": 2454400,
+        "currency": "INR",
+        "base_amount": 2454400,
+        "status": "captured",
+        "order_id": "order_OJpkBSMsTCkRK7",
+        "invoice_id": null,
+        "international": false,
+        "method": "upi",
+        "amount_refunded": 0,
+        "amount_transferred": 0,
+        "refund_status": null,
+        "captured": true,
+        "description": "Meeting Fees Payment",
+        "card_id": null,
+        "bank": null,
+        "wallet": null,
+        "vpa": "sam.desai143@okhdfcbank",
+        "email": "sam.desai143@gmail.com",
+        "contact": "+919909317297",
+        "notes": {
+          "chapter_id": 17,
+          "end_at": "2024-09-26",
+          "gstin": "24ABZPD0972C1ZJ",
+          "member_email": "sam.desai143@gmail.com",
+          "member_name": "Sohil Desai",
+          "member_phone": 9909317297,
+          "remark": "BNI Meeting Fees",
+          "start_at": "2024-03-26",
+          "type": "meeting_fees"
+        },
+        "fee": 0,
+        "tax": 0,
+        "error_code": null,
+        "error_description": null,
+        "error_source": null,
+        "error_step": null,
+        "error_reason": null,
+        "acquirer_data": {
+          "rrn": "415959435239"
+        },
+        "created_at": 1717755183,
+        "provider": null,
+        "upi": {
+          "payer_account_type": "bank_account",
+          "vpa": "sam.desai143@okhdfcbank"
+        },
+        "reward": null,
+        "late_authorized": false
+      }
+    }
+  },
+  "created_at": 1717755197
+}
+
+Time: 2024-06-07T11:33:16.185Z
+{
+  "entity": "event",
+  "account_id": "acc_H153XGJVqCRd5a",
+  "event": "payment.captured",
+  "contains": [
+    "payment"
+  ],
+  "payload": {
+    "payment": {
+      "entity": {
+        "id": "pay_OJpPZnSouDfQBP",
+        "entity": "payment",
+        "amount": 2516668,
+        "currency": "INR",
+        "status": "captured",
+        "order_id": "order_OJpN1hFP1y6TVB",
+        "invoice_id": null,
+        "international": false,
+        "method": "emi",
+        "amount_refunded": 0,
+        "refund_status": null,
+        "captured": true,
+        "description": "Meeting Fees Payment",
+        "card_id": "card_OJpPbZWYo5XkuC",
+        "card": {
+          "id": "card_OJpPbZWYo5XkuC",
+          "entity": "card",
+          "name": "",
+          "last4": "4703",
+          "network": "MasterCard",
+          "type": "credit",
+          "issuer": "IDFB",
+          "international": false,
+          "emi": true,
+          "sub_type": "consumer",
+          "token_iin": "559876979"
+        },
+        "bank": "IDFB",
+        "wallet": null,
+        "vpa": null,
+        "email": "sameer@franchiseinsider.in",
+        "contact": "+919377733467",
+        "token_id": "token_NI6hg6cECT7EU5",
+        "notes": {
+          "type": "meeting_fees",
+          "gstin": "24AAKCC1699L1Z6",
+          "end_at": "2024-09-29",
+          "remark": "BNI Meeting Fees",
+          "start_at": "2024-03-29",
+          "chapter_id": 1,
+          "member_name": "SAMEER DESAI",
+          "member_email": "sameer@franchiseinsider.in",
+          "member_phone": 9377733467
+        },
+        "fee": 62268,
+        "tax": 9498,
+        "error_code": null,
+        "error_description": null,
+        "error_source": null,
+        "error_step": null,
+        "error_reason": null,
+        "acquirer_data": {
+          "auth_code": "060959",
+          "rrn": "003754579575"
+        },
+        "emi": {
+          "issuer": "IDFB",
+          "type": "credit",
+          "rate": 1500,
+          "duration": 6
+        },
+        "emi_plan": {
+          "issuer": "IDFB",
+          "type": "credit",
+          "rate": 1500,
+          "duration": 6
+        },
+        "created_at": 1717753996,
+        "reward": null,
+        "late_authorized": false,
+        "base_amount": 2516668
+      }
+    }
+  },
+  "created_at": 1717754029
+}
+
+Time: 2024-06-07T12:06:21.231Z
+{
+  "entity": "event",
+  "account_id": "acc_H153XGJVqCRd5a",
+  "event": "payment.captured",
+  "contains": [
+    "payment"
+  ],
+  "payload": {
+    "payment": {
+      "entity": {
+        "id": "pay_OJpkVxG2fJtSiy",
+        "entity": "payment",
+        "amount": 2454400,
+        "currency": "INR",
+        "base_amount": 2454400,
+        "status": "captured",
+        "order_id": "order_OJpkBSMsTCkRK7",
+        "invoice_id": null,
+        "international": false,
+        "method": "upi",
+        "amount_refunded": 0,
+        "amount_transferred": 0,
+        "refund_status": null,
+        "captured": true,
+        "description": "Meeting Fees Payment",
+        "card_id": null,
+        "bank": null,
+        "wallet": null,
+        "vpa": "sam.desai143@okhdfcbank",
+        "email": "sam.desai143@gmail.com",
+        "contact": "+919909317297",
+        "notes": {
+          "chapter_id": 17,
+          "end_at": "2024-09-26",
+          "gstin": "24ABZPD0972C1ZJ",
+          "member_email": "sam.desai143@gmail.com",
+          "member_name": "Sohil Desai",
+          "member_phone": 9909317297,
+          "remark": "BNI Meeting Fees",
+          "start_at": "2024-03-26",
+          "type": "meeting_fees"
+        },
+        "fee": 0,
+        "tax": 0,
+        "error_code": null,
+        "error_description": null,
+        "error_source": null,
+        "error_step": null,
+        "error_reason": null,
+        "acquirer_data": {
+          "rrn": "415959435239"
+        },
+        "created_at": 1717755183,
+        "provider": null,
+        "upi": {
+          "payer_account_type": "bank_account",
+          "vpa": "sam.desai143@okhdfcbank"
+        },
+        "reward": null,
+        "late_authorized": false
+      }
+    }
+  },
+  "created_at": 1717755197
+}
+
+Time: 2024-06-07T12:06:55.743Z
+{
+  "entity": "event",
+  "account_id": "acc_H153XGJVqCRd5a",
+  "event": "payment.captured",
+  "contains": [
+    "payment"
+  ],
+  "payload": {
+    "payment": {
+      "entity": {
+        "id": "pay_OJpPZnSouDfQBP",
+        "entity": "payment",
+        "amount": 2516668,
+        "currency": "INR",
+        "status": "captured",
+        "order_id": "order_OJpN1hFP1y6TVB",
+        "invoice_id": null,
+        "international": false,
+        "method": "emi",
+        "amount_refunded": 0,
+        "refund_status": null,
+        "captured": true,
+        "description": "Meeting Fees Payment",
+        "card_id": "card_OJpPbZWYo5XkuC",
+        "card": {
+          "id": "card_OJpPbZWYo5XkuC",
+          "entity": "card",
+          "name": "",
+          "last4": "4703",
+          "network": "MasterCard",
+          "type": "credit",
+          "issuer": "IDFB",
+          "international": false,
+          "emi": true,
+          "sub_type": "consumer",
+          "token_iin": "559876979"
+        },
+        "bank": "IDFB",
+        "wallet": null,
+        "vpa": null,
+        "email": "sameer@franchiseinsider.in",
+        "contact": "+919377733467",
+        "token_id": "token_NI6hg6cECT7EU5",
+        "notes": {
+          "type": "meeting_fees",
+          "gstin": "24AAKCC1699L1Z6",
+          "end_at": "2024-09-29",
+          "remark": "BNI Meeting Fees",
+          "start_at": "2024-03-29",
+          "chapter_id": 1,
+          "member_name": "SAMEER DESAI",
+          "member_email": "sameer@franchiseinsider.in",
+          "member_phone": 9377733467
+        },
+        "fee": 62268,
+        "tax": 9498,
+        "error_code": null,
+        "error_description": null,
+        "error_source": null,
+        "error_step": null,
+        "error_reason": null,
+        "acquirer_data": {
+          "auth_code": "060959",
+          "rrn": "003754579575"
+        },
+        "emi": {
+          "issuer": "IDFB",
+          "type": "credit",
+          "rate": 1500,
+          "duration": 6
+        },
+        "emi_plan": {
+          "issuer": "IDFB",
+          "type": "credit",
+          "rate": 1500,
+          "duration": 6
+        },
+        "created_at": 1717753996,
+        "reward": null,
+        "late_authorized": false,
+        "base_amount": 2516668
+      }
+    }
+  },
+  "created_at": 1717754029
+}
+
+Time: 2024-06-07T12:42:14.277Z
+{
+  "entity": "event",
+  "account_id": "acc_H153XGJVqCRd5a",
+  "event": "payment.captured",
+  "contains": [
+    "payment"
+  ],
+  "payload": {
+    "payment": {
+      "entity": {
+        "id": "pay_OJpkVxG2fJtSiy",
+        "entity": "payment",
+        "amount": 2454400,
+        "currency": "INR",
+        "base_amount": 2454400,
+        "status": "captured",
+        "order_id": "order_OJpkBSMsTCkRK7",
+        "invoice_id": null,
+        "international": false,
+        "method": "upi",
+        "amount_refunded": 0,
+        "amount_transferred": 0,
+        "refund_status": null,
+        "captured": true,
+        "description": "Meeting Fees Payment",
+        "card_id": null,
+        "bank": null,
+        "wallet": null,
+        "vpa": "sam.desai143@okhdfcbank",
+        "email": "sam.desai143@gmail.com",
+        "contact": "+919909317297",
+        "notes": {
+          "chapter_id": 17,
+          "end_at": "2024-09-26",
+          "gstin": "24ABZPD0972C1ZJ",
+          "member_email": "sam.desai143@gmail.com",
+          "member_name": "Sohil Desai",
+          "member_phone": 9909317297,
+          "remark": "BNI Meeting Fees",
+          "start_at": "2024-03-26",
+          "type": "meeting_fees"
+        },
+        "fee": 0,
+        "tax": 0,
+        "error_code": null,
+        "error_description": null,
+        "error_source": null,
+        "error_step": null,
+        "error_reason": null,
+        "acquirer_data": {
+          "rrn": "415959435239"
+        },
+        "created_at": 1717755183,
+        "provider": null,
+        "upi": {
+          "payer_account_type": "bank_account",
+          "vpa": "sam.desai143@okhdfcbank"
+        },
+        "reward": null,
+        "late_authorized": false
+      }
+    }
+  },
+  "created_at": 1717755197
+}
+
+Time: 2024-06-07T12:43:44.082Z
+{
+  "entity": "event",
+  "account_id": "acc_H153XGJVqCRd5a",
+  "event": "payment.captured",
+  "contains": [
+    "payment"
+  ],
+  "payload": {
+    "payment": {
+      "entity": {
+        "id": "pay_OJpPZnSouDfQBP",
+        "entity": "payment",
+        "amount": 2516668,
+        "currency": "INR",
+        "status": "captured",
+        "order_id": "order_OJpN1hFP1y6TVB",
+        "invoice_id": null,
+        "international": false,
+        "method": "emi",
+        "amount_refunded": 0,
+        "refund_status": null,
+        "captured": true,
+        "description": "Meeting Fees Payment",
+        "card_id": "card_OJpPbZWYo5XkuC",
+        "card": {
+          "id": "card_OJpPbZWYo5XkuC",
+          "entity": "card",
+          "name": "",
+          "last4": "4703",
+          "network": "MasterCard",
+          "type": "credit",
+          "issuer": "IDFB",
+          "international": false,
+          "emi": true,
+          "sub_type": "consumer",
+          "token_iin": "559876979"
+        },
+        "bank": "IDFB",
+        "wallet": null,
+        "vpa": null,
+        "email": "sameer@franchiseinsider.in",
+        "contact": "+919377733467",
+        "token_id": "token_NI6hg6cECT7EU5",
+        "notes": {
+          "type": "meeting_fees",
+          "gstin": "24AAKCC1699L1Z6",
+          "end_at": "2024-09-29",
+          "remark": "BNI Meeting Fees",
+          "start_at": "2024-03-29",
+          "chapter_id": 1,
+          "member_name": "SAMEER DESAI",
+          "member_email": "sameer@franchiseinsider.in",
+          "member_phone": 9377733467
+        },
+        "fee": 62268,
+        "tax": 9498,
+        "error_code": null,
+        "error_description": null,
+        "error_source": null,
+        "error_step": null,
+        "error_reason": null,
+        "acquirer_data": {
+          "auth_code": "060959",
+          "rrn": "003754579575"
+        },
+        "emi": {
+          "issuer": "IDFB",
+          "type": "credit",
+          "rate": 1500,
+          "duration": 6
+        },
+        "emi_plan": {
+          "issuer": "IDFB",
+          "type": "credit",
+          "rate": 1500,
+          "duration": 6
+        },
+        "created_at": 1717753996,
+        "reward": null,
+        "late_authorized": false,
+        "base_amount": 2516668
+      }
+    }
+  },
+  "created_at": 1717754029
+}
+
+Time: 2024-06-07T13:22:42.547Z
+{
+  "entity": "event",
+  "account_id": "acc_H153XGJVqCRd5a",
+  "event": "payment.captured",
+  "contains": [
+    "payment"
+  ],
+  "payload": {
+    "payment": {
+      "entity": {
+        "id": "pay_OJpkVxG2fJtSiy",
+        "entity": "payment",
+        "amount": 2454400,
+        "currency": "INR",
+        "base_amount": 2454400,
+        "status": "captured",
+        "order_id": "order_OJpkBSMsTCkRK7",
+        "invoice_id": null,
+        "international": false,
+        "method": "upi",
+        "amount_refunded": 0,
+        "amount_transferred": 0,
+        "refund_status": null,
+        "captured": true,
+        "description": "Meeting Fees Payment",
+        "card_id": null,
+        "bank": null,
+        "wallet": null,
+        "vpa": "sam.desai143@okhdfcbank",
+        "email": "sam.desai143@gmail.com",
+        "contact": "+919909317297",
+        "notes": {
+          "chapter_id": 17,
+          "end_at": "2024-09-26",
+          "gstin": "24ABZPD0972C1ZJ",
+          "member_email": "sam.desai143@gmail.com",
+          "member_name": "Sohil Desai",
+          "member_phone": 9909317297,
+          "remark": "BNI Meeting Fees",
+          "start_at": "2024-03-26",
+          "type": "meeting_fees"
+        },
+        "fee": 0,
+        "tax": 0,
+        "error_code": null,
+        "error_description": null,
+        "error_source": null,
+        "error_step": null,
+        "error_reason": null,
+        "acquirer_data": {
+          "rrn": "415959435239"
+        },
+        "created_at": 1717755183,
+        "provider": null,
+        "upi": {
+          "payer_account_type": "bank_account",
+          "vpa": "sam.desai143@okhdfcbank"
+        },
+        "reward": null,
+        "late_authorized": false
+      }
+    }
+  },
+  "created_at": 1717755197
+}
+
+Time: 2024-06-07T13:28:19.588Z
+{
+  "entity": "event",
+  "account_id": "acc_H153XGJVqCRd5a",
+  "event": "payment.captured",
+  "contains": [
+    "payment"
+  ],
+  "payload": {
+    "payment": {
+      "entity": {
+        "id": "pay_OJpPZnSouDfQBP",
+        "entity": "payment",
+        "amount": 2516668,
+        "currency": "INR",
+        "status": "captured",
+        "order_id": "order_OJpN1hFP1y6TVB",
+        "invoice_id": null,
+        "international": false,
+        "method": "emi",
+        "amount_refunded": 0,
+        "refund_status": null,
+        "captured": true,
+        "description": "Meeting Fees Payment",
+        "card_id": "card_OJpPbZWYo5XkuC",
+        "card": {
+          "id": "card_OJpPbZWYo5XkuC",
+          "entity": "card",
+          "name": "",
+          "last4": "4703",
+          "network": "MasterCard",
+          "type": "credit",
+          "issuer": "IDFB",
+          "international": false,
+          "emi": true,
+          "sub_type": "consumer",
+          "token_iin": "559876979"
+        },
+        "bank": "IDFB",
+        "wallet": null,
+        "vpa": null,
+        "email": "sameer@franchiseinsider.in",
+        "contact": "+919377733467",
+        "token_id": "token_NI6hg6cECT7EU5",
+        "notes": {
+          "type": "meeting_fees",
+          "gstin": "24AAKCC1699L1Z6",
+          "end_at": "2024-09-29",
+          "remark": "BNI Meeting Fees",
+          "start_at": "2024-03-29",
+          "chapter_id": 1,
+          "member_name": "SAMEER DESAI",
+          "member_email": "sameer@franchiseinsider.in",
+          "member_phone": 9377733467
+        },
+        "fee": 62268,
+        "tax": 9498,
+        "error_code": null,
+        "error_description": null,
+        "error_source": null,
+        "error_step": null,
+        "error_reason": null,
+        "acquirer_data": {
+          "auth_code": "060959",
+          "rrn": "003754579575"
+        },
+        "emi": {
+          "issuer": "IDFB",
+          "type": "credit",
+          "rate": 1500,
+          "duration": 6
+        },
+        "emi_plan": {
+          "issuer": "IDFB",
+          "type": "credit",
+          "rate": 1500,
+          "duration": 6
+        },
+        "created_at": 1717753996,
+        "reward": null,
+        "late_authorized": false,
+        "base_amount": 2516668
+      }
+    }
+  },
+  "created_at": 1717754029
+}
+
+Time: 2024-06-07T14:06:49.481Z
+{
+  "entity": "event",
+  "account_id": "acc_H153XGJVqCRd5a",
+  "event": "payment.captured",
+  "contains": [
+    "payment"
+  ],
+  "payload": {
+    "payment": {
+      "entity": {
+        "id": "pay_OJpkVxG2fJtSiy",
+        "entity": "payment",
+        "amount": 2454400,
+        "currency": "INR",
+        "base_amount": 2454400,
+        "status": "captured",
+        "order_id": "order_OJpkBSMsTCkRK7",
+        "invoice_id": null,
+        "international": false,
+        "method": "upi",
+        "amount_refunded": 0,
+        "amount_transferred": 0,
+        "refund_status": null,
+        "captured": true,
+        "description": "Meeting Fees Payment",
+        "card_id": null,
+        "bank": null,
+        "wallet": null,
+        "vpa": "sam.desai143@okhdfcbank",
+        "email": "sam.desai143@gmail.com",
+        "contact": "+919909317297",
+        "notes": {
+          "chapter_id": 17,
+          "end_at": "2024-09-26",
+          "gstin": "24ABZPD0972C1ZJ",
+          "member_email": "sam.desai143@gmail.com",
+          "member_name": "Sohil Desai",
+          "member_phone": 9909317297,
+          "remark": "BNI Meeting Fees",
+          "start_at": "2024-03-26",
+          "type": "meeting_fees"
+        },
+        "fee": 0,
+        "tax": 0,
+        "error_code": null,
+        "error_description": null,
+        "error_source": null,
+        "error_step": null,
+        "error_reason": null,
+        "acquirer_data": {
+          "rrn": "415959435239"
+        },
+        "created_at": 1717755183,
+        "provider": null,
+        "upi": {
+          "payer_account_type": "bank_account",
+          "vpa": "sam.desai143@okhdfcbank"
+        },
+        "reward": null,
+        "late_authorized": false
+      }
+    }
+  },
+  "created_at": 1717755197
+}
+
+Time: 2024-06-07T14:18:57.939Z
+{
+  "entity": "event",
+  "account_id": "acc_H153XGJVqCRd5a",
+  "event": "payment.captured",
+  "contains": [
+    "payment"
+  ],
+  "payload": {
+    "payment": {
+      "entity": {
+        "id": "pay_OJpPZnSouDfQBP",
+        "entity": "payment",
+        "amount": 2516668,
+        "currency": "INR",
+        "status": "captured",
+        "order_id": "order_OJpN1hFP1y6TVB",
+        "invoice_id": null,
+        "international": false,
+        "method": "emi",
+        "amount_refunded": 0,
+        "refund_status": null,
+        "captured": true,
+        "description": "Meeting Fees Payment",
+        "card_id": "card_OJpPbZWYo5XkuC",
+        "card": {
+          "id": "card_OJpPbZWYo5XkuC",
+          "entity": "card",
+          "name": "",
+          "last4": "4703",
+          "network": "MasterCard",
+          "type": "credit",
+          "issuer": "IDFB",
+          "international": false,
+          "emi": true,
+          "sub_type": "consumer",
+          "token_iin": "559876979"
+        },
+        "bank": "IDFB",
+        "wallet": null,
+        "vpa": null,
+        "email": "sameer@franchiseinsider.in",
+        "contact": "+919377733467",
+        "token_id": "token_NI6hg6cECT7EU5",
+        "notes": {
+          "type": "meeting_fees",
+          "gstin": "24AAKCC1699L1Z6",
+          "end_at": "2024-09-29",
+          "remark": "BNI Meeting Fees",
+          "start_at": "2024-03-29",
+          "chapter_id": 1,
+          "member_name": "SAMEER DESAI",
+          "member_email": "sameer@franchiseinsider.in",
+          "member_phone": 9377733467
+        },
+        "fee": 62268,
+        "tax": 9498,
+        "error_code": null,
+        "error_description": null,
+        "error_source": null,
+        "error_step": null,
+        "error_reason": null,
+        "acquirer_data": {
+          "auth_code": "060959",
+          "rrn": "003754579575"
+        },
+        "emi": {
+          "issuer": "IDFB",
+          "type": "credit",
+          "rate": 1500,
+          "duration": 6
+        },
+        "emi_plan": {
+          "issuer": "IDFB",
+          "type": "credit",
+          "rate": 1500,
+          "duration": 6
+        },
+        "created_at": 1717753996,
+        "reward": null,
+        "late_authorized": false,
+        "base_amount": 2516668
+      }
+    }
+  },
+  "created_at": 1717754029
+}
+
+Time: 2024-06-07T14:54:37.650Z
+{
+  "entity": "event",
+  "account_id": "acc_H153XGJVqCRd5a",
+  "event": "payment.captured",
+  "contains": [
+    "payment"
+  ],
+  "payload": {
+    "payment": {
+      "entity": {
+        "id": "pay_OJpkVxG2fJtSiy",
+        "entity": "payment",
+        "amount": 2454400,
+        "currency": "INR",
+        "base_amount": 2454400,
+        "status": "captured",
+        "order_id": "order_OJpkBSMsTCkRK7",
+        "invoice_id": null,
+        "international": false,
+        "method": "upi",
+        "amount_refunded": 0,
+        "amount_transferred": 0,
+        "refund_status": null,
+        "captured": true,
+        "description": "Meeting Fees Payment",
+        "card_id": null,
+        "bank": null,
+        "wallet": null,
+        "vpa": "sam.desai143@okhdfcbank",
+        "email": "sam.desai143@gmail.com",
+        "contact": "+919909317297",
+        "notes": {
+          "chapter_id": 17,
+          "end_at": "2024-09-26",
+          "gstin": "24ABZPD0972C1ZJ",
+          "member_email": "sam.desai143@gmail.com",
+          "member_name": "Sohil Desai",
+          "member_phone": 9909317297,
+          "remark": "BNI Meeting Fees",
+          "start_at": "2024-03-26",
+          "type": "meeting_fees"
+        },
+        "fee": 0,
+        "tax": 0,
+        "error_code": null,
+        "error_description": null,
+        "error_source": null,
+        "error_step": null,
+        "error_reason": null,
+        "acquirer_data": {
+          "rrn": "415959435239"
+        },
+        "created_at": 1717755183,
+        "provider": null,
+        "upi": {
+          "payer_account_type": "bank_account",
+          "vpa": "sam.desai143@okhdfcbank"
+        },
+        "reward": null,
+        "late_authorized": false
+      }
+    }
+  },
+  "created_at": 1717755197
+}
+
+Time: 2024-06-07T15:21:07.165Z
+{
+  "entity": "event",
+  "account_id": "acc_H153XGJVqCRd5a",
+  "event": "payment.captured",
+  "contains": [
+    "payment"
+  ],
+  "payload": {
+    "payment": {
+      "entity": {
+        "id": "pay_OJpPZnSouDfQBP",
+        "entity": "payment",
+        "amount": 2516668,
+        "currency": "INR",
+        "status": "captured",
+        "order_id": "order_OJpN1hFP1y6TVB",
+        "invoice_id": null,
+        "international": false,
+        "method": "emi",
+        "amount_refunded": 0,
+        "refund_status": null,
+        "captured": true,
+        "description": "Meeting Fees Payment",
+        "card_id": "card_OJpPbZWYo5XkuC",
+        "card": {
+          "id": "card_OJpPbZWYo5XkuC",
+          "entity": "card",
+          "name": "",
+          "last4": "4703",
+          "network": "MasterCard",
+          "type": "credit",
+          "issuer": "IDFB",
+          "international": false,
+          "emi": true,
+          "sub_type": "consumer",
+          "token_iin": "559876979"
+        },
+        "bank": "IDFB",
+        "wallet": null,
+        "vpa": null,
+        "email": "sameer@franchiseinsider.in",
+        "contact": "+919377733467",
+        "token_id": "token_NI6hg6cECT7EU5",
+        "notes": {
+          "type": "meeting_fees",
+          "gstin": "24AAKCC1699L1Z6",
+          "end_at": "2024-09-29",
+          "remark": "BNI Meeting Fees",
+          "start_at": "2024-03-29",
+          "chapter_id": 1,
+          "member_name": "SAMEER DESAI",
+          "member_email": "sameer@franchiseinsider.in",
+          "member_phone": 9377733467
+        },
+        "fee": 62268,
+        "tax": 9498,
+        "error_code": null,
+        "error_description": null,
+        "error_source": null,
+        "error_step": null,
+        "error_reason": null,
+        "acquirer_data": {
+          "auth_code": "060959",
+          "rrn": "003754579575"
+        },
+        "emi": {
+          "issuer": "IDFB",
+          "type": "credit",
+          "rate": 1500,
+          "duration": 6
+        },
+        "emi_plan": {
+          "issuer": "IDFB",
+          "type": "credit",
+          "rate": 1500,
+          "duration": 6
+        },
+        "created_at": 1717753996,
+        "reward": null,
+        "late_authorized": false,
+        "base_amount": 2516668
+      }
+    }
+  },
+  "created_at": 1717754029
+}
+
+Time: 2024-06-07T15:55:07.749Z
+{
+  "entity": "event",
+  "account_id": "acc_H153XGJVqCRd5a",
+  "event": "payment.captured",
+  "contains": [
+    "payment"
+  ],
+  "payload": {
+    "payment": {
+      "entity": {
+        "id": "pay_OJpkVxG2fJtSiy",
+        "entity": "payment",
+        "amount": 2454400,
+        "currency": "INR",
+        "base_amount": 2454400,
+        "status": "captured",
+        "order_id": "order_OJpkBSMsTCkRK7",
+        "invoice_id": null,
+        "international": false,
+        "method": "upi",
+        "amount_refunded": 0,
+        "amount_transferred": 0,
+        "refund_status": null,
+        "captured": true,
+        "description": "Meeting Fees Payment",
+        "card_id": null,
+        "bank": null,
+        "wallet": null,
+        "vpa": "sam.desai143@okhdfcbank",
+        "email": "sam.desai143@gmail.com",
+        "contact": "+919909317297",
+        "notes": {
+          "chapter_id": 17,
+          "end_at": "2024-09-26",
+          "gstin": "24ABZPD0972C1ZJ",
+          "member_email": "sam.desai143@gmail.com",
+          "member_name": "Sohil Desai",
+          "member_phone": 9909317297,
+          "remark": "BNI Meeting Fees",
+          "start_at": "2024-03-26",
+          "type": "meeting_fees"
+        },
+        "fee": 0,
+        "tax": 0,
+        "error_code": null,
+        "error_description": null,
+        "error_source": null,
+        "error_step": null,
+        "error_reason": null,
+        "acquirer_data": {
+          "rrn": "415959435239"
+        },
+        "created_at": 1717755183,
+        "provider": null,
+        "upi": {
+          "payer_account_type": "bank_account",
+          "vpa": "sam.desai143@okhdfcbank"
+        },
+        "reward": null,
+        "late_authorized": false
+      }
+    }
+  },
+  "created_at": 1717755197
+}
+
+Time: 2024-06-07T16:43:05.658Z
+{
+  "entity": "event",
+  "account_id": "acc_H153XGJVqCRd5a",
+  "event": "payment.captured",
+  "contains": [
+    "payment"
+  ],
+  "payload": {
+    "payment": {
+      "entity": {
+        "id": "pay_OJpPZnSouDfQBP",
+        "entity": "payment",
+        "amount": 2516668,
+        "currency": "INR",
+        "status": "captured",
+        "order_id": "order_OJpN1hFP1y6TVB",
+        "invoice_id": null,
+        "international": false,
+        "method": "emi",
+        "amount_refunded": 0,
+        "refund_status": null,
+        "captured": true,
+        "description": "Meeting Fees Payment",
+        "card_id": "card_OJpPbZWYo5XkuC",
+        "card": {
+          "id": "card_OJpPbZWYo5XkuC",
+          "entity": "card",
+          "name": "",
+          "last4": "4703",
+          "network": "MasterCard",
+          "type": "credit",
+          "issuer": "IDFB",
+          "international": false,
+          "emi": true,
+          "sub_type": "consumer",
+          "token_iin": "559876979"
+        },
+        "bank": "IDFB",
+        "wallet": null,
+        "vpa": null,
+        "email": "sameer@franchiseinsider.in",
+        "contact": "+919377733467",
+        "token_id": "token_NI6hg6cECT7EU5",
+        "notes": {
+          "type": "meeting_fees",
+          "gstin": "24AAKCC1699L1Z6",
+          "end_at": "2024-09-29",
+          "remark": "BNI Meeting Fees",
+          "start_at": "2024-03-29",
+          "chapter_id": 1,
+          "member_name": "SAMEER DESAI",
+          "member_email": "sameer@franchiseinsider.in",
+          "member_phone": 9377733467
+        },
+        "fee": 62268,
+        "tax": 9498,
+        "error_code": null,
+        "error_description": null,
+        "error_source": null,
+        "error_step": null,
+        "error_reason": null,
+        "acquirer_data": {
+          "auth_code": "060959",
+          "rrn": "003754579575"
+        },
+        "emi": {
+          "issuer": "IDFB",
+          "type": "credit",
+          "rate": 1500,
+          "duration": 6
+        },
+        "emi_plan": {
+          "issuer": "IDFB",
+          "type": "credit",
+          "rate": 1500,
+          "duration": 6
+        },
+        "created_at": 1717753996,
+        "reward": null,
+        "late_authorized": false,
+        "base_amount": 2516668
+      }
+    }
+  },
+  "created_at": 1717754029
+}
+
+Time: 2024-06-07T17:13:41.191Z
+{
+  "entity": "event",
+  "account_id": "acc_H153XGJVqCRd5a",
+  "event": "payment.captured",
+  "contains": [
+    "payment"
+  ],
+  "payload": {
+    "payment": {
+      "entity": {
+        "id": "pay_OJpkVxG2fJtSiy",
+        "entity": "payment",
+        "amount": 2454400,
+        "currency": "INR",
+        "base_amount": 2454400,
+        "status": "captured",
+        "order_id": "order_OJpkBSMsTCkRK7",
+        "invoice_id": null,
+        "international": false,
+        "method": "upi",
+        "amount_refunded": 0,
+        "amount_transferred": 0,
+        "refund_status": null,
+        "captured": true,
+        "description": "Meeting Fees Payment",
+        "card_id": null,
+        "bank": null,
+        "wallet": null,
+        "vpa": "sam.desai143@okhdfcbank",
+        "email": "sam.desai143@gmail.com",
+        "contact": "+919909317297",
+        "notes": {
+          "chapter_id": 17,
+          "end_at": "2024-09-26",
+          "gstin": "24ABZPD0972C1ZJ",
+          "member_email": "sam.desai143@gmail.com",
+          "member_name": "Sohil Desai",
+          "member_phone": 9909317297,
+          "remark": "BNI Meeting Fees",
+          "start_at": "2024-03-26",
+          "type": "meeting_fees"
+        },
+        "fee": 0,
+        "tax": 0,
+        "error_code": null,
+        "error_description": null,
+        "error_source": null,
+        "error_step": null,
+        "error_reason": null,
+        "acquirer_data": {
+          "rrn": "415959435239"
+        },
+        "created_at": 1717755183,
+        "provider": null,
+        "upi": {
+          "payer_account_type": "bank_account",
+          "vpa": "sam.desai143@okhdfcbank"
+        },
+        "reward": null,
+        "late_authorized": false
+      }
+    }
+  },
+  "created_at": 1717755197
+}
+
+Time: 2024-06-07T18:40:59.574Z
+{
+  "entity": "event",
+  "account_id": "acc_H153XGJVqCRd5a",
+  "event": "payment.captured",
+  "contains": [
+    "payment"
+  ],
+  "payload": {
+    "payment": {
+      "entity": {
+        "id": "pay_OJpPZnSouDfQBP",
+        "entity": "payment",
+        "amount": 2516668,
+        "currency": "INR",
+        "status": "captured",
+        "order_id": "order_OJpN1hFP1y6TVB",
+        "invoice_id": null,
+        "international": false,
+        "method": "emi",
+        "amount_refunded": 0,
+        "refund_status": null,
+        "captured": true,
+        "description": "Meeting Fees Payment",
+        "card_id": "card_OJpPbZWYo5XkuC",
+        "card": {
+          "id": "card_OJpPbZWYo5XkuC",
+          "entity": "card",
+          "name": "",
+          "last4": "4703",
+          "network": "MasterCard",
+          "type": "credit",
+          "issuer": "IDFB",
+          "international": false,
+          "emi": true,
+          "sub_type": "consumer",
+          "token_iin": "559876979"
+        },
+        "bank": "IDFB",
+        "wallet": null,
+        "vpa": null,
+        "email": "sameer@franchiseinsider.in",
+        "contact": "+919377733467",
+        "token_id": "token_NI6hg6cECT7EU5",
+        "notes": {
+          "type": "meeting_fees",
+          "gstin": "24AAKCC1699L1Z6",
+          "end_at": "2024-09-29",
+          "remark": "BNI Meeting Fees",
+          "start_at": "2024-03-29",
+          "chapter_id": 1,
+          "member_name": "SAMEER DESAI",
+          "member_email": "sameer@franchiseinsider.in",
+          "member_phone": 9377733467
+        },
+        "fee": 62268,
+        "tax": 9498,
+        "error_code": null,
+        "error_description": null,
+        "error_source": null,
+        "error_step": null,
+        "error_reason": null,
+        "acquirer_data": {
+          "auth_code": "060959",
+          "rrn": "003754579575"
+        },
+        "emi": {
+          "issuer": "IDFB",
+          "type": "credit",
+          "rate": 1500,
+          "duration": 6
+        },
+        "emi_plan": {
+          "issuer": "IDFB",
+          "type": "credit",
+          "rate": 1500,
+          "duration": 6
+        },
+        "created_at": 1717753996,
+        "reward": null,
+        "late_authorized": false,
+        "base_amount": 2516668
+      }
+    }
+  },
+  "created_at": 1717754029
+}
+
+Time: 2024-06-07T19:06:40.859Z
+{
+  "entity": "event",
+  "account_id": "acc_H153XGJVqCRd5a",
+  "event": "payment.captured",
+  "contains": [
+    "payment"
+  ],
+  "payload": {
+    "payment": {
+      "entity": {
+        "id": "pay_OJpkVxG2fJtSiy",
+        "entity": "payment",
+        "amount": 2454400,
+        "currency": "INR",
+        "base_amount": 2454400,
+        "status": "captured",
+        "order_id": "order_OJpkBSMsTCkRK7",
+        "invoice_id": null,
+        "international": false,
+        "method": "upi",
+        "amount_refunded": 0,
+        "amount_transferred": 0,
+        "refund_status": null,
+        "captured": true,
+        "description": "Meeting Fees Payment",
+        "card_id": null,
+        "bank": null,
+        "wallet": null,
+        "vpa": "sam.desai143@okhdfcbank",
+        "email": "sam.desai143@gmail.com",
+        "contact": "+919909317297",
+        "notes": {
+          "chapter_id": 17,
+          "end_at": "2024-09-26",
+          "gstin": "24ABZPD0972C1ZJ",
+          "member_email": "sam.desai143@gmail.com",
+          "member_name": "Sohil Desai",
+          "member_phone": 9909317297,
+          "remark": "BNI Meeting Fees",
+          "start_at": "2024-03-26",
+          "type": "meeting_fees"
+        },
+        "fee": 0,
+        "tax": 0,
+        "error_code": null,
+        "error_description": null,
+        "error_source": null,
+        "error_step": null,
+        "error_reason": null,
+        "acquirer_data": {
+          "rrn": "415959435239"
+        },
+        "created_at": 1717755183,
+        "provider": null,
+        "upi": {
+          "payer_account_type": "bank_account",
+          "vpa": "sam.desai143@okhdfcbank"
+        },
+        "reward": null,
+        "late_authorized": false
+      }
+    }
+  },
+  "created_at": 1717755197
+}
+
+Time: 2024-06-07T21:39:34.714Z
+{
+  "entity": "event",
+  "account_id": "acc_H153XGJVqCRd5a",
+  "event": "payment.captured",
+  "contains": [
+    "payment"
+  ],
+  "payload": {
+    "payment": {
+      "entity": {
+        "id": "pay_OJpPZnSouDfQBP",
+        "entity": "payment",
+        "amount": 2516668,
+        "currency": "INR",
+        "status": "captured",
+        "order_id": "order_OJpN1hFP1y6TVB",
+        "invoice_id": null,
+        "international": false,
+        "method": "emi",
+        "amount_refunded": 0,
+        "refund_status": null,
+        "captured": true,
+        "description": "Meeting Fees Payment",
+        "card_id": "card_OJpPbZWYo5XkuC",
+        "card": {
+          "id": "card_OJpPbZWYo5XkuC",
+          "entity": "card",
+          "name": "",
+          "last4": "4703",
+          "network": "MasterCard",
+          "type": "credit",
+          "issuer": "IDFB",
+          "international": false,
+          "emi": true,
+          "sub_type": "consumer",
+          "token_iin": "559876979"
+        },
+        "bank": "IDFB",
+        "wallet": null,
+        "vpa": null,
+        "email": "sameer@franchiseinsider.in",
+        "contact": "+919377733467",
+        "token_id": "token_NI6hg6cECT7EU5",
+        "notes": {
+          "type": "meeting_fees",
+          "gstin": "24AAKCC1699L1Z6",
+          "end_at": "2024-09-29",
+          "remark": "BNI Meeting Fees",
+          "start_at": "2024-03-29",
+          "chapter_id": 1,
+          "member_name": "SAMEER DESAI",
+          "member_email": "sameer@franchiseinsider.in",
+          "member_phone": 9377733467
+        },
+        "fee": 62268,
+        "tax": 9498,
+        "error_code": null,
+        "error_description": null,
+        "error_source": null,
+        "error_step": null,
+        "error_reason": null,
+        "acquirer_data": {
+          "auth_code": "060959",
+          "rrn": "003754579575"
+        },
+        "emi": {
+          "issuer": "IDFB",
+          "type": "credit",
+          "rate": 1500,
+          "duration": 6
+        },
+        "emi_plan": {
+          "issuer": "IDFB",
+          "type": "credit",
+          "rate": 1500,
+          "duration": 6
+        },
+        "created_at": 1717753996,
+        "reward": null,
+        "late_authorized": false,
+        "base_amount": 2516668
+      }
+    }
+  },
+  "created_at": 1717754029
+}
+
+Time: 2024-06-07T21:58:34.126Z
+{
+  "entity": "event",
+  "account_id": "acc_H153XGJVqCRd5a",
+  "event": "payment.captured",
+  "contains": [
+    "payment"
+  ],
+  "payload": {
+    "payment": {
+      "entity": {
+        "id": "pay_OJpkVxG2fJtSiy",
+        "entity": "payment",
+        "amount": 2454400,
+        "currency": "INR",
+        "base_amount": 2454400,
+        "status": "captured",
+        "order_id": "order_OJpkBSMsTCkRK7",
+        "invoice_id": null,
+        "international": false,
+        "method": "upi",
+        "amount_refunded": 0,
+        "amount_transferred": 0,
+        "refund_status": null,
+        "captured": true,
+        "description": "Meeting Fees Payment",
+        "card_id": null,
+        "bank": null,
+        "wallet": null,
+        "vpa": "sam.desai143@okhdfcbank",
+        "email": "sam.desai143@gmail.com",
+        "contact": "+919909317297",
+        "notes": {
+          "chapter_id": 17,
+          "end_at": "2024-09-26",
+          "gstin": "24ABZPD0972C1ZJ",
+          "member_email": "sam.desai143@gmail.com",
+          "member_name": "Sohil Desai",
+          "member_phone": 9909317297,
+          "remark": "BNI Meeting Fees",
+          "start_at": "2024-03-26",
+          "type": "meeting_fees"
+        },
+        "fee": 0,
+        "tax": 0,
+        "error_code": null,
+        "error_description": null,
+        "error_source": null,
+        "error_step": null,
+        "error_reason": null,
+        "acquirer_data": {
+          "rrn": "415959435239"
+        },
+        "created_at": 1717755183,
+        "provider": null,
+        "upi": {
+          "payer_account_type": "bank_account",
+          "vpa": "sam.desai143@okhdfcbank"
+        },
+        "reward": null,
+        "late_authorized": false
+      }
+    }
+  },
+  "created_at": 1717755197
+}
+
+Time: 2024-06-08T03:21:31.863Z
+{
+  "entity": "event",
+  "account_id": "acc_H153XGJVqCRd5a",
+  "event": "payment.captured",
+  "contains": [
+    "payment"
+  ],
+  "payload": {
+    "payment": {
+      "entity": {
+        "id": "pay_OJpPZnSouDfQBP",
+        "entity": "payment",
+        "amount": 2516668,
+        "currency": "INR",
+        "status": "captured",
+        "order_id": "order_OJpN1hFP1y6TVB",
+        "invoice_id": null,
+        "international": false,
+        "method": "emi",
+        "amount_refunded": 0,
+        "refund_status": null,
+        "captured": true,
+        "description": "Meeting Fees Payment",
+        "card_id": "card_OJpPbZWYo5XkuC",
+        "card": {
+          "id": "card_OJpPbZWYo5XkuC",
+          "entity": "card",
+          "name": "",
+          "last4": "4703",
+          "network": "MasterCard",
+          "type": "credit",
+          "issuer": "IDFB",
+          "international": false,
+          "emi": true,
+          "sub_type": "consumer",
+          "token_iin": "559876979"
+        },
+        "bank": "IDFB",
+        "wallet": null,
+        "vpa": null,
+        "email": "sameer@franchiseinsider.in",
+        "contact": "+919377733467",
+        "token_id": "token_NI6hg6cECT7EU5",
+        "notes": {
+          "type": "meeting_fees",
+          "gstin": "24AAKCC1699L1Z6",
+          "end_at": "2024-09-29",
+          "remark": "BNI Meeting Fees",
+          "start_at": "2024-03-29",
+          "chapter_id": 1,
+          "member_name": "SAMEER DESAI",
+          "member_email": "sameer@franchiseinsider.in",
+          "member_phone": 9377733467
+        },
+        "fee": 62268,
+        "tax": 9498,
+        "error_code": null,
+        "error_description": null,
+        "error_source": null,
+        "error_step": null,
+        "error_reason": null,
+        "acquirer_data": {
+          "auth_code": "060959",
+          "rrn": "003754579575"
+        },
+        "emi": {
+          "issuer": "IDFB",
+          "type": "credit",
+          "rate": 1500,
+          "duration": 6
+        },
+        "emi_plan": {
+          "issuer": "IDFB",
+          "type": "credit",
+          "rate": 1500,
+          "duration": 6
+        },
+        "created_at": 1717753996,
+        "reward": null,
+        "late_authorized": false,
+        "base_amount": 2516668
+      }
+    }
+  },
+  "created_at": 1717754029
+}
+
+Time: 2024-06-08T03:39:59.038Z
+{
+  "entity": "event",
+  "account_id": "acc_H153XGJVqCRd5a",
+  "event": "payment.captured",
+  "contains": [
+    "payment"
+  ],
+  "payload": {
+    "payment": {
+      "entity": {
+        "id": "pay_OJpkVxG2fJtSiy",
+        "entity": "payment",
+        "amount": 2454400,
+        "currency": "INR",
+        "base_amount": 2454400,
+        "status": "captured",
+        "order_id": "order_OJpkBSMsTCkRK7",
+        "invoice_id": null,
+        "international": false,
+        "method": "upi",
+        "amount_refunded": 0,
+        "amount_transferred": 0,
+        "refund_status": null,
+        "captured": true,
+        "description": "Meeting Fees Payment",
+        "card_id": null,
+        "bank": null,
+        "wallet": null,
+        "vpa": "sam.desai143@okhdfcbank",
+        "email": "sam.desai143@gmail.com",
+        "contact": "+919909317297",
+        "notes": {
+          "chapter_id": 17,
+          "end_at": "2024-09-26",
+          "gstin": "24ABZPD0972C1ZJ",
+          "member_email": "sam.desai143@gmail.com",
+          "member_name": "Sohil Desai",
+          "member_phone": 9909317297,
+          "remark": "BNI Meeting Fees",
+          "start_at": "2024-03-26",
+          "type": "meeting_fees"
+        },
+        "fee": 0,
+        "tax": 0,
+        "error_code": null,
+        "error_description": null,
+        "error_source": null,
+        "error_step": null,
+        "error_reason": null,
+        "acquirer_data": {
+          "rrn": "415959435239"
+        },
+        "created_at": 1717755183,
+        "provider": null,
+        "upi": {
+          "payer_account_type": "bank_account",
+          "vpa": "sam.desai143@okhdfcbank"
+        },
+        "reward": null,
+        "late_authorized": false
+      }
+    }
+  },
+  "created_at": 1717755197
+}
+

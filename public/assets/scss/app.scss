@@ -1,0 +1,45 @@
+// Bootstrap Scss //
+@import 'bootstrap/dist/css/bootstrap.min.css';
+// @import '~@fortawesome/fontawesome-free/css/all.min.css';
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
+
+@import 'rsuite/dist/rsuite.min.css';
+// simplebar
+@import 'simplebar-react/dist/simplebar.min.css';
+
+// ReactToastify
+@import '~react-toastify/dist/ReactToastify.css';
+
+// Carousel
+@import "react-responsive-carousel/lib/styles/carousel.min.css";
+
+// Flag icon
+@import '~flag-icons/css/flag-icons.min.css';
+
+// Themefiy Awesome
+@import './vendors/themify/themify-icons';
+
+// Slick Slider Scss //
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
+
+// Timeline-calender
+@import "react-calendar-timeline/lib/Timeline.css";
+
+//react-dropzone-uploader
+@import 'react-dropzone-uploader/dist/styles.css';
+
+//react-bootstrap-typeahead
+@import 'react-bootstrap-typeahead/css/Typeahead.css';
+
+// react date-piker
+@import "react-datepicker/dist/react-datepicker.css";
+
+// Carousel
+@import "react-responsive-carousel/lib/styles/carousel.min.css";
+
+// Style Scss //
+@import './style.scss';
+
+// Responsive Scss //
+@import './responsive.scss';
