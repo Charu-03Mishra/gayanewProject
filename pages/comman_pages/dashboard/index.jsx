@@ -1393,16 +1393,14 @@ const Index = () => {
 										<span className="value">{chaptersData?.chapter_name}</span>
 									</div>
 								</div>
-								<div className="dashboard-item">
+								{/* <div className="dashboard-item">
 									<i className="fas fa-calendar-alt icon"></i>
 									<div className="details">
 										<span className="label">Membership Renewal Date</span>
-										<span className="value">
-											{moment(userData?.membership_end_date).format("LL")}
-										</span>
+										
 									</div>
-								</div>
-								<div className="dashboard-item">
+								</div> */}
+								{/* <div className="dashboard-item">
 									<i className="fas fa-coins icon"></i>
 									<div className="details">
 										<span className="label">Meeting Fees Clear Till</span>
@@ -1412,46 +1410,198 @@ const Index = () => {
 												: moment(userData?.manual_induction).format("LL")}
 										</span>
 									</div>
-								</div>
+								</div> */}
 							</CardBody>
 
-							<CardFooter className="text-center">
-								<Row>
-									{userData?.flag === 1 ? (
-										<>
-											<Col md="2" xs="12" sm="4" className="mb-1">
-												<Btn
-													color="primary"
+							<CardFooter
+								className=""
+								style={{ fontFamily: "$font-serif", fontWeight: "bold" }}>
+								<div className="membership-container">
+									<div className="text-center">
+										<h1
+											style={{
+												fontWeight: "bold",
+												color: " #b91c1c",
+												fontSize: "25px",
+											}}>
+											Membership Portal
+										</h1>
+										<p style={{ fontWeight: "bold", fontSize: "15px" }}>
+											Select your preferred payment options
+										</p>
+									</div>
+									<div className="membership-box">
+										<div className="membership-header">
+											<i className="fa-solid fa-credit-card icon"></i>
+											<div className="details">
+												<span className="fees">Meeting Fees Clear Till</span>
+											</div>
+										</div>
+										<div className="membership-due">
+											<i className="fa-solid fa-calendar calendar-icon"></i>{" "}
+											<span className="due">Due Date: </span>{" "}
+											<span className="due-date">
+												{userData?.mf_end_date
+													? moment(userData.mf_end_date).format("LL")
+													: moment(userData?.manual_induction).format("LL")}
+											</span>
+										</div>
+										<div className="payment-options">
+											{userData?.flag === 1 ? (
+												<div
+													className="payment-option "
 													onClick={() => handleOptionSelection("payOneMonthly")}
-													block>
+													style={{
+														backgroundColor:
+															selectedOption === "payOneMonthly"
+																? "#FFEAEB"
+																: "white",
+														border:
+															selectedOption === "payOneMonthly"
+																? "2px solid  #b91c1c "
+																: "2px solid gray",
+														color:
+															selectedOption === "payOneMonthly"
+																? "#b91c1c"
+																: "rgb(55 65 81)",
+													}}>
 													Pay one month
-												</Btn>
-											</Col>
-										</>
-									) : (
+												</div>
+											) : (
+												<div
+													className="payment-option"
+													onClick={handleCDPSPayment}>
+													CDPS Payment
+												</div>
+											)}
+											<div
+												className="payment-option"
+												onClick={() => handleOptionSelection("paySixMonthly")}
+												style={{
+													backgroundColor:
+														selectedOption === "paySixMonthly"
+															? "#FFEAEB"
+															: "white",
+													border:
+														selectedOption === "paySixMonthly"
+															? "2px solid  #b91c1c "
+															: "2px solid gray",
+													color:
+														selectedOption === "paySixMonthly"
+															? "#b91c1c"
+															: "rgb(55 65 81)",
+												}}>
+												Pay six months
+											</div>
+											<div
+												className="payment-option"
+												onClick={() => handleOptionSelection("yearly")}
+												style={{
+													backgroundColor:
+														selectedOption === "yearly" ? "#FFEAEB" : "white",
+													border:
+														selectedOption === "yearly"
+															? "2px solid  #b91c1c "
+															: "2px solid gray",
+													color:
+														selectedOption === "yearly"
+															? "#b91c1c"
+															: "rgb(55 65 81)",
+												}}>
+												Pay yearly
+											</div>
+											<div
+												className="payment-option"
+												onClick={() => handleOptionSelection("tillRenewal")}
+												style={{
+													backgroundColor:
+														selectedOption === "tillRenewal"
+															? "#FFEAEB"
+															: "white",
+													border:
+														selectedOption === "tillRenewal"
+															? "2px solid  #b91c1c "
+															: "2px solid gray",
+													color:
+														selectedOption === "tillRenewal"
+															? "#b91c1c"
+															: "rgb(55 65 81)",
+												}}>
+												Pay till renewal
+											</div>
+										</div>
+									</div>
+								</div>
+								<div className="membership-box">
+									<div className="membership-header">
+										<i className="fa-solid fa-credit-card icon"></i>
+										<div className="details">
+											<span className="fees">Membership Renewal Date</span>
+										</div>
+									</div>
+									<div className="membership-due">
+										<i className="fa-solid fa-calendar calendar-icon"></i>{" "}
+										<span className="due"> Due Date: </span>{" "}
+										<span className="due-date">
+											{moment(userData?.membership_end_date).format("LL")}
+										</span>
+									</div>
+									<div className="payment-options">
+										<div
+											className="payment-option"
+											onClick={() => handleOptionSelection("membershipRenewal")}
+											style={{
+												backgroundColor:
+													selectedOption === "membershipRenewal"
+														? "#FFEAEB"
+														: "white",
+												border:
+													selectedOption === "membershipRenewal"
+														? "2px solid  #b91c1c "
+														: "2px solid gray",
+												color:
+													selectedOption === "membershipRenewal"
+														? "#b91c1c"
+														: "rgb(55 65 81)",
+											}}>
+											{" "}
+											Pay membership renewal
+										</div>
+									</div>
+								</div>
+								{/* {userData?.flag === 1 ? (
+									<>
 										<Col md="2" xs="12" sm="4" className="mb-1">
-											<Btn color="primary" onClick={handleCDPSPayment} block>
-												CDPS Payment
+											<Btn
+												color="primary"
+												onClick={() => handleOptionSelection("payOneMonthly")}
+												block>
+												Pay one month
 											</Btn>
 										</Col>
-									)}
+									</>
+								) : (
 									<Col md="2" xs="12" sm="4" className="mb-1">
-										<Btn
-											color="primary"
-											onClick={() => handleOptionSelection("paySixMonthly")}
-											block>
-											Pay six month
-										</Btn>
+										<Btn color="primary">CDPS Payment</Btn>
 									</Col>
-									<Col md="2" xs="12" sm="4" className="mb-1">
-										<Btn
-											color="primary"
-											onClick={() => handleOptionSelection("yearly")}
-											block>
-											Pay yearly
-										</Btn>
-									</Col>
-									{/* <Btn
+								)} */}
+								{/* <Col md="2" xs="12" sm="4" className="mb-1">
+									<Btn
+										color="primary"
+										onClick={() => handleOptionSelection("paySixMonthly")}
+										block>
+										Pay six month
+									</Btn>
+								</Col> */}
+								{/* <Col md="2" xs="12" sm="4" className="mb-1">
+									<Btn
+										color="primary"
+										onClick={() => handleOptionSelection("yearly")}
+										block>
+										Pay yearly
+									</Btn>
+								</Col> */}
+								{/* <Btn
                       color="primary"
                       onClick={handleSubscriptionPayment}
                       block
@@ -1459,7 +1609,7 @@ const Index = () => {
                       Subscribe monthly
                     </Btn> */}
 
-									{/* <Col md="2" xs="12" sm="4" className="mb-1">
+								{/* <Col md="2" xs="12" sm="4" className="mb-1">
                     <Btn
                       color="primary"
                       onClick={() => handleOptionSelection("yearly")}
@@ -1468,7 +1618,7 @@ const Index = () => {
                       Pay yearly
                     </Btn>
                   </Col> */}
-									{/* <Col md="2" xs="12" sm="4" className="mb-1">
+								{/* <Col md="2" xs="12" sm="4" className="mb-1">
                       <Btn
                         color="primary"
                         onClick={() => handleOptionSelection("payOneMonthly")}
@@ -1478,23 +1628,19 @@ const Index = () => {
                       </Btn>
                     </Col> */}
 
-									<Col md="2" xs="12" sm="4" className="mb-1">
-										<Btn
-											color="primary"
-											onClick={() => handleOptionSelection("tillRenewal")}
-											block>
-											Pay till renewal
-										</Btn>
-									</Col>
-									<Col md="3" xs="12" sm="4" className="mb-1">
-										<Btn
-											color="primary"
-											onClick={() => handleOptionSelection("membershipRenewal")}
-											block>
-											Pay membership renewal
-										</Btn>
-									</Col>
-								</Row>
+								{/* <Col md="2" xs="12" sm="4" className="mb-1">
+									<Btn color="primary" block>
+										Pay till renewal
+									</Btn>
+								</Col> */}
+								{/* <Col md="3" xs="12" sm="4" className="mb-1">
+									<Btn
+										color="primary"
+										onClick={() => handleOptionSelection("membershipRenewal")}
+										block>
+										Pay membership renewal
+									</Btn>
+								</Col> */}
 							</CardFooter>
 						</Card>
 					</Col>

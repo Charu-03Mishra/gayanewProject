@@ -22,6 +22,7 @@ import PerUserExpenseTable from "../components/PerUserExpenseTable";
 import ExpensePieChart from "../components/ExpensePieChart";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { log } from "node:console";
 
 const areaChartOptions = {
 	chart: {
@@ -111,6 +112,8 @@ const Index = () => {
 		paidCurrent: 0,
 		pendingCount: 0,
 	});
+
+	console.log(chaptersData, "chaptersData");
 
 	const currentDate = new Date();
 	const lastFourMonths: any = [];
@@ -405,17 +408,19 @@ const Index = () => {
 
 	const kittyColumns: any = [
 		{
-      name: "Chapter Name",
-      selector: (row: any) => (
-        <Link href={`/kittybalance?chapter_id=${row.chapter_id}`} style={{ color: "blue" }}>
-          {row.chapter_name}
-        </Link>
-      ),
-      sortable: true,
-      sortFunction: (a: any, b: any) => {
-        return a.chapter_name.localeCompare(b.chapter_name);
-      }
-    },
+			name: "Chapter Name",
+			selector: (row: any) => (
+				<Link
+					href={`/kittybalance?chapter_id=${row.chapter_id}`}
+					style={{ color: "blue" }}>
+					{row.chapter_name}
+				</Link>
+			),
+			sortable: true,
+			sortFunction: (a: any, b: any) => {
+				return a.chapter_name.localeCompare(b.chapter_name);
+			},
+		},
 
 		{
 			name: "Opening Balance",
@@ -455,7 +460,7 @@ const Index = () => {
 
 			try {
 				const response = await axios.get("/api/chapters", config);
-				setChaptersData(response.data);
+				setChaptersData(response.data.chapters);
 			} catch (error) {
 				console.error("Error fetching chapters data:", error);
 			}
@@ -570,6 +575,7 @@ const Index = () => {
 
 		fetchPaymentData();
 	}, [token, chaptersData]);
+	console.log(chaptersData);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -845,12 +851,14 @@ const Index = () => {
 										style={{ fontSize: "12px" }}
 										onChange={(e: any) => setChaptersFilter(e.target.value)}>
 										<option value="all">All</option>
-										{chaptersData?.map((option: any, index: any) => (
-											<option key={index} value={option.id}>
-												{option.chapter_name}
-											</option>
-										))}
+										{Array.isArray(chaptersData) &&
+											chaptersData.map((option: any, index: number) => (
+												<option key={index} value={option.id}>
+													{option.chapter_name}
+												</option>
+											))}
 									</Input>
+
 									<Chart
 										options={pieChart}
 										series={[
@@ -875,23 +883,6 @@ const Index = () => {
 								</CardBody>
 							</Card>
 						</Col>
-						{/* <Col xl="6" sm="12">
-              <Card>
-                <CardBody>
-                  <div className="table-responsive">
-                    <DataTable
-                      pagination
-                      subHeader
-                      highlightOnHover
-                      striped
-                      persistTableHead
-                      columns={columns}
-                      data={chaptersData}
-                    />
-                  </div>
-                </CardBody>
-              </Card>
-            </Col> */}
 					</Row>
 					<Row>
 						<Col xl="6" sm="12">
@@ -908,7 +899,7 @@ const Index = () => {
 											striped
 											persistTableHead
 											columns={chapColumns}
-											data={chaptersData}
+											data={chaptersData || []}
 										/>
 									</div>
 								</CardBody>

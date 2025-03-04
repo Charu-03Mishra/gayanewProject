@@ -122,7 +122,6 @@
 		display: flex;
 		align-items: center;
 		padding: 15px;
-		margin: 10px 0;
 		border-radius: 15px; // Rounded corners for items
 		background: rgba(255, 255, 255, 0.6); // Semi-transparent background
 		backdrop-filter: blur(5px); // Blur effect
@@ -153,9 +152,63 @@
 		}
 	}
 
+	.membership-box {
+		max-width: 700px;
+		margin: 20px auto;
+		overflow: hidden;
+		padding-bottom: 10px;
+		border-radius: 10px;
+		border: 2px solid rgb(0, 0, 0);
+		background-color: white;
+	}
+	.membership-header {
+		display: flex;
+		background: linear-gradient(to left, #b91c1c, #ef4444);
+		gap: 10px;
+		align-items: center;
+		padding: 20px 20px;
+	}
+	.membership-due {
+		padding: 8px 20px;
+	}
+	.membership-header i {
+		font-size: 18px;
+		color: white;
+		font-weight: 800;
+	}
+	.fees {
+		font-size: 18px;
+		color: white;
+	}
+	.due {
+		color: #000;
+	}
+	.calendar-icon {
+		color: #ef4444;
+	}
+	.due-date {
+		color: #b91c1c;
+	}
+
 	.sub-title {
 		padding-bottom: 12px;
 		font-size: calc(15px + (18 - 15) * ((100vw - 320px) / (1920 - 320)));
+	}
+	.payment-options {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		gap: 18px;
+		padding: 10px 0;
+	}
+	.payment-option {
+		width: 300px;
+		text-align: center;
+		background: rgb(223, 216, 216);
+		padding: 16px 0;
+		border-radius: 8px;
+		cursor: pointer;
 	}
 
 	.card-footer {

@@ -61,7 +61,7 @@ export default function PerUserExpenseTable() {
 			striped
 			persistTableHead
 			columns={expenseColumns}
-			data={expenses}
+			data={expenses || []}
 		/>
 	);
 }

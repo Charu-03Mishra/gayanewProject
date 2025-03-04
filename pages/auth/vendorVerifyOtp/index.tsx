@@ -60,7 +60,9 @@ export default function Index() {
           },
         }
       );
-      toast.success("OTP resent successfully!");
+      if(response.status === 200) {
+        toast.success("OTP resent successfully!");
+      }
     } catch (error: any) {
       toast.error("Failed to resend OTP.");
     }

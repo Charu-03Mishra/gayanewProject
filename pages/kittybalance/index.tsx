@@ -96,6 +96,8 @@ const Index = () => {
       try {
         const response = await axios.get("/api/chapters", config);
         setChaptersData(response.data);
+        console.log(response.data,"data");
+        
       } catch (error) {
         console.error("Error fetching chapters data:", error);
       }

@@ -260,13 +260,16 @@ const CDPSPayment = () => {
 	const [perPage, setPerPage] = useState<number>(10);
 	const [currentPage, setCurrentPage] = useState<number>(1);
 	const [totalRows, setTotalRows] = useState<number>(0);
-
+	const [ltData, setLtData] = useState<any>({});
+	const [chaptersData, setselectChapter] = useState<any>([]);
+	const [selectchaptersData, setSelectchaptersData] = useState<any>("");
+	const urlParams = new URLSearchParams(window.location.search);
+	const role = localStorage.getItem("role");
 	const columns: any = [
 		{
 			name: "Amount",
 			selector: (row: any) => `\u20B9${row.total_amount}`,
 			sortable: true,
-			
 		},
 		{
 			name: "Txn ID",
@@ -346,6 +349,11 @@ const CDPSPayment = () => {
 			setSearchTerm("");
 		}
 	};
+	const handleChapterChange = (e: any) => {
+		console.log(e.target.value);
+
+		setSelectchaptersData(e.target.value);
+	};
 
 	const subHeaderComponentMemo = useMemo(() => {
 		return (
@@ -371,9 +379,24 @@ const CDPSPayment = () => {
 						Search
 					</Btn>
 				</div>
+				<div className="dataTables_filter d-flex align-items-center">
+					<Input
+						type="select"
+						value={selectchaptersData}
+						onChange={handleChapterChange}>
+						<option value="">Chapters</option>
+						{Array?.isArray(chaptersData) &&
+							chaptersData?.map((option: any, index: any) => (
+								<option key={index} value={option.id}>
+									{option?.chapter_name}
+								</option>
+							))}
+					</Input>
+				</div>
 			</>
 		);
-	}, [filterText, dateRange]);
+	}, [filterText, dateRange, chaptersData, selectchaptersData]);
+	console.log(selectchaptersData);
 
 	const handleDownloadCSV = async () => {
 		const config = {
@@ -403,8 +426,40 @@ const CDPSPayment = () => {
 			console.error("Error downloading CSV:", error);
 		}
 	};
+	const fetchData2 = async () => {
+		if (typeof window !== "undefined" && window.localStorage) {
+			const config = {
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			};
 
-	const fetchData = async (page: number, pageSize: any) => {
+			try {
+				const response = await axios.get("/api/chapterlist", config);
+				let chapterFilterData: any;
+				if (role === "admin" || role === "vendor") {
+					chapterFilterData = response.data.chapters;
+					console.log(data, "data chapter");
+				} else {
+					chapterFilterData = response.data?.filter(
+						(value: any) => value?.id === ltData?.chapter_id
+					);
+				}
+				setselectChapter(chapterFilterData);
+			} catch (error) {
+				console.error("Error fetching chapters data:", error);
+			}
+		}
+	};
+	useEffect(() => {
+		fetchData2();
+	}, [token, ltData]);
+
+	const fetchData = async (
+		page: number,
+		pageSize: any,
+		selectchaptersData: any
+	) => {
 		if (typeof window !== "undefined" && window.localStorage) {
 			const config = {
 				headers: {
@@ -415,6 +470,7 @@ const CDPSPayment = () => {
 				page,
 				pageSize,
 				payment_type: "CDPS Payment",
+				chapter_id: urlParams.get("chapter_id"),
 			};
 
 			if (searchTerm) params.search = searchTerm;
@@ -422,9 +478,13 @@ const CDPSPayment = () => {
 				params.startDate = moment(dateRange[0]).format("YYYY-MM-DD");
 				params.endDate = moment(dateRange[1]).format("YYYY-MM-DD");
 			}
+			const url = new URL(`/api/payment-type-filter`, window.location.origin);
+			if (selectchaptersData !== "") {
+				url.searchParams.append("chapter_id", selectchaptersData);
+			}
 
 			try {
-				const responseFilter = await axios.get(`/api/payment-type-filter`, {
+				const responseFilter = await axios.get(url.toString(), {
 					params,
 					...config,
 				});
@@ -439,13 +499,17 @@ const CDPSPayment = () => {
 	};
 
 	const handlePageChange = (page: any) => {
-		fetchData(page, perPage);
+		fetchData(page, perPage, selectchaptersData);
 		setCurrentPage(page);
 	};
 
 	const handleRowsPerPageChange = async (newRowsPerPage: any) => {
 		if (!data.length) return;
-		fetchData(currentPage, newRowsPerPage);
+		fetchData(
+			currentPage,
+			newRowsPerPage.selectchaptersData,
+			selectchaptersData
+		);
 		setPerPage(newRowsPerPage);
 	};
 
@@ -464,8 +528,8 @@ const CDPSPayment = () => {
 		);
 
 	useEffect(() => {
-		fetchData(currentPage, perPage);
-	}, [dateFilterApplied, searchTerm]);
+		fetchData(currentPage, perPage, selectchaptersData);
+	}, [dateFilterApplied, searchTerm, selectchaptersData]);
 	return (
 		<Layout>
 			<div className="page-body">

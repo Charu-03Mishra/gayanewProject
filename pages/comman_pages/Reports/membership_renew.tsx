@@ -12,6 +12,7 @@ import jsPDF from "jspdf";
 import "jspdf-autotable";
 import { DateRangePicker } from "rsuite";
 import { ValueType } from "rsuite/esm/DateRangePicker";
+import { log } from "node:console";
 
 const MembershipRenew = () => {
 	const token = localStorage.getItem("signIn");
@@ -20,7 +21,13 @@ const MembershipRenew = () => {
 	const [dateFilterApplied, setDateFilterApplied] = useState(false);
 	const [dateRange, setDateRange] = useState<ValueType | any>([]);
 	const [data, setData] = useState([]);
+	const [ltData, setLtData] = useState<any>({});
+	const role = localStorage.getItem("role");
 	const [perPage, setPerPage] = useState<number>(10);
+	const [chaptersData, setselectChapter] = useState<any>([]);
+	const [selectchaptersData, setSelectchaptersData] = useState<any>("");
+	const urlParams = new URLSearchParams(window.location.search);
+	// const [selectedchapters, setselectdChapter] = useState<any>("");
 	const [currentPage, setCurrentPage] = useState<number>(1);
 	const [totalRows, setTotalRows] = useState<number>(0);
 
@@ -122,6 +129,12 @@ const MembershipRenew = () => {
 		setSearchTerm(filterText?.trim());
 		setDateFilterApplied(true);
 	};
+	const handleChapterChange = (e: any) => {
+		console.log(e.target.value);
+
+		setSelectchaptersData(e.target.value);
+	};
+	console.log(selectchaptersData);
 
 	const handleDateFilter = (value: any) => {
 		setDateRange(value);
@@ -163,11 +176,59 @@ const MembershipRenew = () => {
 						Search
 					</Btn>
 				</div>
+				<div className="dataTables_filter d-flex align-items-center">
+					<Label>Chapter:</Label>
+					<Input
+						type="select"
+						value={selectchaptersData}
+						onChange={handleChapterChange}>
+						<option value="">All</option>
+						{Array?.isArray(chaptersData) &&
+							chaptersData?.map((option: any, index: any) => (
+								<option key={index} value={option.id}>
+									{option?.chapter_name}
+								</option>
+							))}
+					</Input>
+				</div>
 			</>
 		);
-	}, [filterText, dateRange]);
+	}, [filterText, dateRange, chaptersData, selectchaptersData]);
 
-	const fetchData = async (page: number, pageSize: any) => {
+	const fetchData2 = async () => {
+		if (typeof window !== "undefined" && window.localStorage) {
+			const config = {
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			};
+
+			try {
+				const response = await axios.get("/api/chapterlist", config);
+				let chapterFilterData: any;
+				if (role === "admin" || role === "vendor") {
+					chapterFilterData = response.data.chapters;
+					console.log(data, "data chapter");
+				} else {
+					chapterFilterData = response.data?.filter(
+						(value: any) => value?.id === ltData?.chapter_id
+					);
+				}
+				setselectChapter(chapterFilterData);
+			} catch (error) {
+				console.error("Error fetching chapters data:", error);
+			}
+		}
+	};
+	useEffect(() => {
+		fetchData2();
+	}, [token, ltData]);
+
+	const fetchData = async (
+		page: number,
+		pageSize: any,
+		selectchaptersData: any
+	) => {
 		if (typeof window !== "undefined" && window.localStorage) {
 			const config = {
 				headers: {
@@ -178,6 +239,7 @@ const MembershipRenew = () => {
 				page,
 				pageSize,
 				payment_type: "membership fees",
+				chapter_id: urlParams.get("chapter_id"),
 			};
 
 			if (searchTerm) params.search = searchTerm;
@@ -185,9 +247,14 @@ const MembershipRenew = () => {
 				params.startDate = moment(dateRange[0]).format("YYYY-MM-DD");
 				params.endDate = moment(dateRange[1]).format("YYYY-MM-DD");
 			}
+			const url = new URL(`/api/payment-type-filter`, window.location.origin);
+
+			if (selectchaptersData !== "") {
+				url.searchParams.append("chapter_id", selectchaptersData);
+			}
 
 			try {
-				const responseFilter = await axios.get(`/api/payment-type-filter`, {
+				const responseFilter = await axios.get(url.toString(), {
 					params,
 					...config,
 				});
@@ -202,19 +269,19 @@ const MembershipRenew = () => {
 	};
 
 	const handlePageChange = (page: any) => {
-		fetchData(page, perPage);
+		fetchData(page, perPage, selectchaptersData);
 		setCurrentPage(page);
 	};
 
 	const handleRowsPerPageChange = async (newRowsPerPage: any) => {
 		if (!data.length) return;
-		fetchData(currentPage, newRowsPerPage);
+		fetchData(currentPage, newRowsPerPage, selectchaptersData);
 		setPerPage(newRowsPerPage);
 	};
 
 	useEffect(() => {
-		fetchData(currentPage, perPage);
-	}, [dateFilterApplied, searchTerm]);
+		fetchData(currentPage, perPage, selectchaptersData);
+	}, [dateFilterApplied, searchTerm, selectchaptersData]);
 	return (
 		<Layout>
 			<div className="page-body">

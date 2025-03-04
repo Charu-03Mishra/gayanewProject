@@ -13,8 +13,8 @@ import { DateRangePicker } from "rsuite";
 import { ValueType } from "rsuite/esm/DateRangePicker";
 
 const TableAction = ({ row }: any) => {
-  const generatePDF = async () => {
-    const pdfElement = `
+	const generatePDF = async () => {
+		const pdfElement = `
       <!DOCTYPE html>
       <html lang="en">
       <body>
@@ -74,8 +74,8 @@ const TableAction = ({ row }: any) => {
                                   <strong>Invoice Date</strong>
                                   <br />
                                   ${moment(row?.start_payment_date).format(
-                                    "LL"
-                                  )}
+																		"LL"
+																	)}
                                 </p>
                               </div>
                             </td>
@@ -110,26 +110,26 @@ const TableAction = ({ row }: any) => {
                     </tr>
                     <tr class="item">
                     <td>Meeting Fees For ${moment(
-                      row.start_payment_date
-                    ).format("MMM-YY")} To ${moment(
-      row.end_payment_date
-    ).format("MMM-YY")}</td>
+											row.start_payment_date
+										).format("MMM-YY")} To ${moment(
+			row.end_payment_date
+		).format("MMM-YY")}</td>
                       <td>998312</td>
                       <td class="text-right">Rs. ${row?.amount}</td>
                     </tr>
                     ${
-                      Number(row?.discount)
-                        ? `
+											Number(row?.discount)
+												? `
                       <tr class="item">
                         <td>Discount</td>
                         <td>998312</td>
                         <td class="text-right">Rs. -${Number(
-                          row?.discount
-                        )?.toFixed(4)}</td>
+													row?.discount
+												)?.toFixed(4)}</td>
                       </tr>
                     `
-                        : ""
-                    }
+												: ""
+										}
                     <tr class="item text-right">
                       <td colspan="3">&nbsp;</td>
                     </tr>
@@ -188,350 +188,414 @@ const TableAction = ({ row }: any) => {
       </html>
     `;
 
-    const element = document.createElement("div");
-    element.innerHTML = pdfElement;
+		const element = document.createElement("div");
+		element.innerHTML = pdfElement;
 
-    // document.body.appendChild(element);
+		// document.body.appendChild(element);
 
-    const pdf = new jsPDF({
-      orientation: "p",
-      unit: "pt",
-      format: "a4",
-    });
+		const pdf = new jsPDF({
+			orientation: "p",
+			unit: "pt",
+			format: "a4",
+		});
 
-    pdf.html(element, {
-      callback: (doc) => {
-        const finalPageCount = doc.getNumberOfPages();
-        for (let i = 1; i <= finalPageCount; i++) {
-          doc.setPage(i);
-          const footerTextLeft = `Copyright © ${new Date().getFullYear()} Gaya Business Service, All Rights Reserved`;
-          const footerTextRight = `Page ${i}`;
-          doc.setFontSize(10);
-          doc.text(
-            footerTextLeft,
-            20, // Left margin for footer text
-            doc.internal.pageSize.getHeight() - 10
-          );
-          doc.text(
-            footerTextRight,
-            doc.internal.pageSize.getWidth() -
-              20 -
-              doc.getTextWidth(footerTextRight), // Right align for footer text
-            doc.internal.pageSize.getHeight() - 10
-          );
-        }
+		pdf.html(element, {
+			callback: (doc) => {
+				const finalPageCount = doc.getNumberOfPages();
+				for (let i = 1; i <= finalPageCount; i++) {
+					doc.setPage(i);
+					const footerTextLeft = `Copyright © ${new Date().getFullYear()} Gaya Business Service, All Rights Reserved`;
+					const footerTextRight = `Page ${i}`;
+					doc.setFontSize(10);
+					doc.text(
+						footerTextLeft,
+						20, // Left margin for footer text
+						doc.internal.pageSize.getHeight() - 10
+					);
+					doc.text(
+						footerTextRight,
+						doc.internal.pageSize.getWidth() -
+							20 -
+							doc.getTextWidth(footerTextRight), // Right align for footer text
+						doc.internal.pageSize.getHeight() - 10
+					);
+				}
 
-        doc.save(row.invoice_no);
-      },
-      margin: [40, 20, 0, 20],
-      autoPaging: "text",
-      x: 0,
-      y: 0,
-      width: 550,
-      windowWidth: 600,
-    });
-  };
+				doc.save(row.invoice_no);
+			},
+			margin: [40, 20, 0, 20],
+			autoPaging: "text",
+			x: 0,
+			y: 0,
+			width: 550,
+			windowWidth: 600,
+		});
+	};
 
-  return (
-    <ul className="action simple-list flex-row">
-      {row.status === "captured" ? (
-        <li className="edit" onClick={generatePDF}>
-          <a href="#">
-            <i className="fa-regular fa-file-pdf fs-5"></i>
-          </a>
-        </li>
-      ) : (
-        ""
-      )}
-    </ul>
-  );
+	return (
+		<ul className="action simple-list flex-row">
+			{row.status === "captured" ? (
+				<li className="edit" onClick={generatePDF}>
+					<a href="#">
+						<i className="fa-regular fa-file-pdf fs-5"></i>
+					</a>
+				</li>
+			) : (
+				""
+			)}
+		</ul>
+	);
 };
 
 const MeetingFeesPayment = () => {
-  const token = localStorage.getItem("signIn");
-  const [filterText, setFilterText] = useState("");
-  const [searchTerm, setSearchTerm] = useState("");
-  const [dateFilterApplied, setDateFilterApplied] = useState(false);
-  const [dateRange, setDateRange] = useState<ValueType | any>([]);
-  const [data, setData] = useState([]);
-  const [perPage, setPerPage] = useState<number>(10);
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const [totalRows, setTotalRows] = useState<number>(0);
-  const urlParams = new URLSearchParams(window.location.search);
+	const token = localStorage.getItem("signIn");
+	const [filterText, setFilterText] = useState("");
+	const [searchTerm, setSearchTerm] = useState("");
+	const [dateFilterApplied, setDateFilterApplied] = useState(false);
+	const [dateRange, setDateRange] = useState<ValueType | any>([]);
+	const [data, setData] = useState([]);
+	const [perPage, setPerPage] = useState<number>(10);
+	const [currentPage, setCurrentPage] = useState<number>(1);
+	const [totalRows, setTotalRows] = useState<number>(0);
+	const urlParams = new URLSearchParams(window.location.search);
+	const [chaptersData, setselectChapter] = useState<any>([]);
+	const [selectchaptersData, setSelectchaptersData] = useState<any>("");
+	const [ltData, setLtData] = useState<any>({});
+	const role = localStorage.getItem("role");
 
-  useEffect(() => {
-    // Parse the date range from the URL
-    const params = new URLSearchParams(location.search);
-    const startDate = params.get("startDate");
-    const endDate = params.get("endDate");
+	useEffect(() => {
+		// Parse the date range from the URL
+		const params = new URLSearchParams(location.search);
+		const startDate = params.get("startDate");
+		const endDate = params.get("endDate");
 
-    if (startDate && endDate) {
-      setDateRange([new Date(startDate), new Date(endDate)]);
-      setDateFilterApplied(true);
-    }
-  }, [location.search]);
-  
-  const columns: any = [
-    {
-      name: "Amount",
-      selector: (row: any) => `\u20B9${row.total_amount}`,
-      sortable: true,
-    },
-    {
-      name: "MF End Date",
-      selector: (row: any) => row.end_date ? moment(row.end_date).format("LL") : '',
-      sortable: true,
-      width: "200px",
-    },
-    {
-      name: "Invoice No",
-      selector: (row: any) => row.invoice_no,
-      sortable: true,
-      width: "150px",
-    },
-    {
-      name: "Chapter Name",
-      selector: (row: any) => row.chapter_name,
-      sortable: true,
-      width: "150px",
-    },
-    {
-      name: "Member Name",
-      selector: (row: any) => row.member_name,
-      sortable: true,
-      width: "150px",
-    },
-    {
-      name: "Transaction Date",
-      selector: (row: any) => moment(row.createdAt).format("LL"),
-      sortable: true,
-      width: "150px",
-    },
-    {
-      name: "Start Date",
-      selector: (row: any) =>
-        row.start_payment_date
-          ? moment(row.start_payment_date).format("LL")
-          : "",
-      sortable: true,
-      width: "170px",
-    },
-    {
-      name: "End Date",
-      selector: (row: any) =>
-        row.end_payment_date ? moment(row.end_payment_date).format("LL") : "",
-      sortable: true,
-      width: "170px",
-    },
-    {
-      name: "Status",
-      selector: (row: any) =>
-        row.status === "captured" ? (
-          <span className="badge badge-flat border-success bg-success">
-            Paid
-          </span>
-        ) : (
-          <span className="badge badge-flat border-primary bg-primary">
-            Pending
-          </span>
-        ),
-      sortable: true,
-    },
-    {
-      name: "Txn ID",
-      selector: (row: any) => row.order_id,
-      sortable: true,
-      width: "200px",
-    },
-    {
-      name: "Action",
-      cell: (row: any) => <TableAction row={row} />,
-      sortable: true,
-    },
-  ];
+		if (startDate && endDate) {
+			setDateRange([new Date(startDate), new Date(endDate)]);
+			setDateFilterApplied(true);
+		}
+	}, [location.search]);
 
-  const filteredItems: any = data
-    .sort((a: any, b: any) => b.id - a.id)
-    .filter((item: any) =>
-      columns.some((column: any) => {
-        let value =
-          typeof column.selector === "function" ? column.selector(item) : "";
+	const columns: any = [
+		{
+			name: "Amount",
+			selector: (row: any) => `\u20B9${row.total_amount}`,
+			sortable: true,
+		},
+		{
+			name: "MF End Date",
+			selector: (row: any) =>
+				row.end_date ? moment(row.end_date).format("LL") : "",
+			sortable: true,
+			width: "200px",
+		},
+		{
+			name: "Invoice No",
+			selector: (row: any) => row.invoice_no,
+			sortable: true,
+			width: "150px",
+		},
+		{
+			name: "Chapter Name",
+			selector: (row: any) => row.chapter_name,
+			sortable: true,
+			width: "150px",
+		},
+		{
+			name: "Member Name",
+			selector: (row: any) => row.member_name,
+			sortable: true,
+			width: "150px",
+		},
+		{
+			name: "Transaction Date",
+			selector: (row: any) => moment(row.createdAt).format("LL"),
+			sortable: true,
+			width: "150px",
+		},
+		{
+			name: "Start Date",
+			selector: (row: any) =>
+				row.start_payment_date
+					? moment(row.start_payment_date).format("LL")
+					: "",
+			sortable: true,
+			width: "170px",
+		},
+		{
+			name: "End Date",
+			selector: (row: any) =>
+				row.end_payment_date ? moment(row.end_payment_date).format("LL") : "",
+			sortable: true,
+			width: "170px",
+		},
+		{
+			name: "Status",
+			selector: (row: any) =>
+				row.status === "captured" ? (
+					<span className="badge badge-flat border-success bg-success">
+						Paid
+					</span>
+				) : (
+					<span className="badge badge-flat border-primary bg-primary">
+						Pending
+					</span>
+				),
+			sortable: true,
+		},
+		{
+			name: "Txn ID",
+			selector: (row: any) => row.order_id,
+			sortable: true,
+			width: "200px",
+		},
+		{
+			name: "Action",
+			cell: (row: any) => <TableAction row={row} />,
+			sortable: true,
+		},
+	];
 
-        if (typeof value === "string") {
-          return value.toLowerCase().includes(searchTerm.toLowerCase());
-        } else if (typeof value === "number") {
-          return value.toString().includes(searchTerm.toLowerCase());
-        }
-        return false;
-      })
-    );
+	const filteredItems: any = data
+		.sort((a: any, b: any) => b.id - a.id)
+		.filter((item: any) =>
+			columns.some((column: any) => {
+				let value =
+					typeof column.selector === "function" ? column.selector(item) : "";
 
-  const handleDownloadCSV = async () => {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      responseType: "blob" as AxiosRequestConfig["responseType"],
-    };
-    const params: any = {
-      payment_type: "meeting fees",
-    };
-    if (searchTerm) params.search = searchTerm;
-    if (dateFilterApplied && dateRange?.length === 2) {
-      params.startDate = moment(dateRange[0]).format("YYYY-MM-DD");
-      params.endDate = moment(dateRange[1]).format("YYYY-MM-DD");
-    }
-    try {
-      const response = await axios.get("/api/export-payment-type", {
-        params,
-        ...config,
-      });
-      const blob = new Blob([response.data], {
-        type: "text/csv;charset=utf-8",
-      });
-      saveAs(blob, "Meeting Fees Payment Report.csv");
-    } catch (error) {
-      console.error("Error downloading CSV:", error);
-    }
-  };
+				if (typeof value === "string") {
+					return value.toLowerCase().includes(searchTerm.toLowerCase());
+				} else if (typeof value === "number") {
+					return value.toString().includes(searchTerm.toLowerCase());
+				}
+				return false;
+			})
+		);
 
-  const handleSearchClick = () => {
-    setSearchTerm(filterText?.trim());
-    setDateFilterApplied(true);
-  };
+	const handleDownloadCSV = async () => {
+		const config = {
+			headers: {
+				Authorization: `Bearer ${token}`,
+			},
+			responseType: "blob" as AxiosRequestConfig["responseType"],
+		};
+		const params: any = {
+			payment_type: "meeting fees",
+		};
+		if (searchTerm) params.search = searchTerm;
+		if (dateFilterApplied && dateRange?.length === 2) {
+			params.startDate = moment(dateRange[0]).format("YYYY-MM-DD");
+			params.endDate = moment(dateRange[1]).format("YYYY-MM-DD");
+		}
+		try {
+			const response = await axios.get("/api/export-payment-type", {
+				params,
+				...config,
+			});
+			const blob = new Blob([response.data], {
+				type: "text/csv;charset=utf-8",
+			});
+			saveAs(blob, "Meeting Fees Payment Report.csv");
+		} catch (error) {
+			console.error("Error downloading CSV:", error);
+		}
+	};
 
-  const handleDateFilter = (value: any) => {
-    setDateRange(value);
-    if (value === null) {
-      setDateFilterApplied(false);
-    }
-  };
+	const handleSearchClick = () => {
+		setSearchTerm(filterText?.trim());
+		setDateFilterApplied(true);
+	};
 
-  const handleOnChangeSearch = (e: any) => {
-    const value = e.target.value;
-    setFilterText(value);
+	const handleDateFilter = (value: any) => {
+		setDateRange(value);
+		if (value === null) {
+			setDateFilterApplied(false);
+		}
+	};
 
-    if (value.trim() === "") {
-      setSearchTerm("");
-    }
-  };
+	const handleChapterChange = (e: any) => {
+		console.log(e.target.value);
 
-  const subHeaderComponentMemo = useMemo(() => {
-    return (
-      <>
-        <div className="field mt-1">
-          <FormGroup className="me-3">
-            <Label>Date Range:</Label>
-            <DateRangePicker
-              value={dateRange}
-              onChange={handleDateFilter}
-              format="yyyy-MM-dd"
-            />
-          </FormGroup>
-        </div>
-        <div className="dataTables_filter d-flex align-items-center">
-          <Label className="me-2">Search:</Label>
-          <Input
-            onChange={handleOnChangeSearch}
-            type="search"
-            value={filterText}
-          />
-          <Btn color="primary" onClick={handleSearchClick} className="ms-2">
-            Search
-          </Btn>
-        </div>
-      </>
-    );
-  }, [filterText, dateRange]);
+		setSelectchaptersData(e.target.value);
+	};
+	console.log(selectchaptersData);
+	const handleOnChangeSearch = (e: any) => {
+		const value = e.target.value;
+		setFilterText(value);
 
-  const fetchData = async (page: number, pageSize: any) => {
-    if (typeof window !== "undefined" && window.localStorage) {
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
-      const params: any = {
-        page,
-        pageSize,
-        payment_type: "meeting fees",
-        chapter_id: urlParams.get('chapter_id') || 'all',
-      };
-      if (urlParams.get('paid_for')){
-        params['paid_for'] = urlParams.get('paid_for')
-      }
+		if (value.trim() === "") {
+			setSearchTerm("");
+		}
+	};
 
-      if (searchTerm) params.search = searchTerm;
-      if (dateFilterApplied && dateRange?.length === 2) {
-        params.startDate = moment(dateRange[0]).format("YYYY-MM-DD");
-        params.endDate = moment(dateRange[1]).format("YYYY-MM-DD");
-      }
+	const subHeaderComponentMemo = useMemo(() => {
+		return (
+			<>
+				<div className="field mt-1">
+					<FormGroup className="me-3">
+						<Label>Date Range:</Label>
+						<DateRangePicker
+							value={dateRange}
+							onChange={handleDateFilter}
+							format="yyyy-MM-dd"
+						/>
+					</FormGroup>
+				</div>
+				<div className="dataTables_filter d-flex align-items-center">
+					<Label className="me-2">Search:</Label>
+					<Input
+						onChange={handleOnChangeSearch}
+						type="search"
+						value={filterText}
+					/>
+					<Btn color="primary" onClick={handleSearchClick} className="ms-2">
+						Search
+					</Btn>
+				</div>
+				<div className="dataTables_filter d-flex align-items-center">
+					<Label>Chapter:</Label>
+					<Input
+						type="select"
+						value={selectchaptersData}
+						onChange={handleChapterChange}>
+						<option value="">All</option>
+						{Array?.isArray(chaptersData) &&
+							chaptersData?.map((option: any, index: any) => (
+								<option key={index} value={option.id}>
+									{option?.chapter_name}
+								</option>
+							))}
+					</Input>
+				</div>
+			</>
+		);
+	}, [filterText, dateRange, selectchaptersData, chaptersData]);
 
-      try {
-        const responseFilter = await axios.get(`/api/payment-type-filter`, {
-          params,
-          ...config,
-        });
+	const fetchData2 = async () => {
+		if (typeof window !== "undefined" && window.localStorage) {
+			const config = {
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			};
 
-        setData(responseFilter?.data.payments);
-        setCurrentPage(responseFilter.data.pagination?.currentPage);
-        setTotalRows(responseFilter.data.pagination?.totalItems);
-      } catch (error) {
-        console.error("Error fetching payment data:", error);
-      }
-    }
-  };
+			try {
+				const response = await axios.get("/api/chapterlist", config);
+				let chapterFilterData: any;
+				if (role === "admin" || role === "vendor") {
+					chapterFilterData = response.data.chapters;
+					console.log(data, "data chapter");
+				} else {
+					chapterFilterData = response.data?.filter(
+						(value: any) => value?.id === ltData?.chapter_id
+					);
+				}
+				setselectChapter(chapterFilterData);
+			} catch (error) {
+				console.error("Error fetching chapters data:", error);
+			}
+		}
+	};
+	useEffect(() => {
+		fetchData2();
+	}, [token, ltData]);
 
-  const handlePageChange = (page: any) => {
-    fetchData(page, perPage);
-    setCurrentPage(page);
-  };
+	useEffect(() => {
+		if (urlParams.get("chapter_id")) {
+			selectchaptersData(urlParams.get("chapter_id"));
+		}
+	}, [urlParams.get("chapter_id")]);
+	const fetchData = async (
+		page: number,
+		pageSize: any,
+		selectchaptersData: any
+	) => {
+		if (typeof window !== "undefined" && window.localStorage) {
+			const config = {
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			};
+			const params: any = {
+				page,
+				pageSize,
+				payment_type: "meeting fees",
+				chapter_id: selectchaptersData || urlParams.get("chapter_id") || "all",
+			};
+			if (urlParams.get("paid_for")) {
+				params["paid_for"] = urlParams.get("paid_for");
+			}
 
-  const handleRowsPerPageChange = async (newRowsPerPage: any) => {
-    if (!data.length) return;
-    fetchData(currentPage, newRowsPerPage);
-    setPerPage(newRowsPerPage);
-  };
+			if (searchTerm) params.search = searchTerm;
+			if (dateFilterApplied && dateRange?.length === 2) {
+				params.startDate = moment(dateRange[0]).format("YYYY-MM-DD");
+				params.endDate = moment(dateRange[1]).format("YYYY-MM-DD");
+			}
 
-  useEffect(() => {
-    fetchData(currentPage, perPage);
-  }, [dateFilterApplied, searchTerm]);
-  return (
-    <Layout>
-      <div className="page-body">
-        <Col sm="12">
-          <Card>
-            <CardBody>
-              <div className="table-responsive">
-                <Btn
-                  color="primary"
-                  className="me-2"
-                  onClick={handleDownloadCSV}
-                >
-                  <i className="fa fa-file-text" aria-hidden="true"></i> CSV
-                </Btn>
-                <DataTable
-                  pagination
-                  paginationServer
-                  paginationPerPage={perPage}
-                  paginationDefaultPage={currentPage}
-                  paginationTotalRows={totalRows}
-                  onChangeRowsPerPage={handleRowsPerPageChange}
-                  onChangePage={handlePageChange}
-                  subHeader
-                  highlightOnHover
-                  striped
-                  persistTableHead
-                  subHeaderComponent={subHeaderComponentMemo}
-                  columns={columns}
-                  data={filteredItems}
-                />
-              </div>
-            </CardBody>
-          </Card>
-        </Col>
-      </div>
-    </Layout>
-  );
+			try {
+				const responseFilter = await axios.get(`/api/payment-type-filter`, {
+					params,
+					...config,
+				});
+
+				setData(responseFilter?.data.payments);
+				setCurrentPage(responseFilter.data.pagination?.currentPage);
+				setTotalRows(responseFilter.data.pagination?.totalItems);
+			} catch (error) {
+				console.error("Error fetching payment data:", error);
+			}
+		}
+	};
+
+	const handlePageChange = (page: any) => {
+		fetchData(page, perPage, selectchaptersData);
+		setCurrentPage(page);
+	};
+
+	const handleRowsPerPageChange = async (newRowsPerPage: any) => {
+		if (!data.length) return;
+		fetchData(currentPage, newRowsPerPage, selectchaptersData);
+		setPerPage(newRowsPerPage);
+	};
+
+	useEffect(() => {
+		fetchData(currentPage, perPage, selectchaptersData);
+	}, [dateFilterApplied, searchTerm, selectchaptersData]);
+	return (
+		<Layout>
+			<div className="page-body">
+				<Col sm="12">
+					<Card>
+						<CardBody>
+							<div className="table-responsive">
+								<Btn
+									color="primary"
+									className="me-2"
+									onClick={handleDownloadCSV}>
+									<i className="fa fa-file-text" aria-hidden="true"></i> CSV
+								</Btn>
+								<DataTable
+									pagination
+									paginationServer
+									paginationPerPage={perPage}
+									paginationDefaultPage={currentPage}
+									paginationTotalRows={totalRows}
+									onChangeRowsPerPage={handleRowsPerPageChange}
+									onChangePage={handlePageChange}
+									subHeader
+									highlightOnHover
+									striped
+									persistTableHead
+									subHeaderComponent={subHeaderComponentMemo}
+									columns={columns}
+									data={filteredItems}
+								/>
+							</div>
+						</CardBody>
+					</Card>
+				</Col>
+			</div>
+		</Layout>
+	);
 };
 export default MeetingFeesPayment;
+

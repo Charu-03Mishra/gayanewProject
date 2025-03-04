@@ -10,7 +10,7 @@ const sessionStore: { [key: string]: any } = {};
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     // Assuming authToken is provided in the request body
-    const authToken = 'U2FsdGVkX1+1zpS8tZr7JRAk5bGUookn4bSuEvyB2dcp4q5+nomQR3YdgzvIYv/vi/7hUy1zLckSd8Iy4+oQpIbGDoYGB2NWKOyR90r4ZW42X0PK8I6w8G5HsWVnV0wqlVPOOxwcuJ3jdTefMZG2yNx26dIe8k4Jot1zs+6BTmk+QUWhImXWBeuvqRszyzPp';
+    const authToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZTVjMmJjZmQyNzdhMGI4ZTU1Yjc0NiIsIm5hbWUiOiJCTkkgLSBTdXJhdCIsImFwcE5hbWUiOiJBaVNlbnN5IiwiY2xpZW50SWQiOiI2NWE0ZjhjZDg3ZWU1MTJlMzMxY2ZjMjYiLCJhY3RpdmVQbGFuIjoiTk9ORSIsImlhdCI6MTcyNjMzMzYyOH0.jEnb7dJ3kdm__7AzgeOZtKTdwtIppg7sr_XmR3RYR8k';
     const { phone } = req.body;
 
     // Generate a new OTP

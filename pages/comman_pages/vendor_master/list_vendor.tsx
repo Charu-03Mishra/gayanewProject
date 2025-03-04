@@ -1,6 +1,7 @@
 import Layout from "@/pages/Layout/Layout";
 import localStorage from "@/utils/localStorage";
 import axios from "axios";
+import { log } from "node:console";
 import React, { useEffect, useMemo, useState } from "react";
 import DataTable from "react-data-table-component";
 import { toast } from "react-toastify";
@@ -54,6 +55,7 @@ const CustomToggle = ({ status, row, fetchData }: any) => {
 };
 
 const Index = () => {
+	const [selectVandor, setselectVandor] = useState<any>(0);
 	const fetchData = async () => {
 		if (typeof window !== "undefined" && window.localStorage) {
 			const config = {
@@ -65,11 +67,14 @@ const Index = () => {
 			try {
 				const response = await axios.get("/api/vendor", config);
 				setData(response.data);
+				const totalvandor = response.data.length;
+				setselectVandor(totalvandor);
 			} catch (error) {
 				console.error("Error fetching vendor data:", error);
 			}
 		}
 	};
+
 	const columns: any = [
 		{
 			name: "Vendor Name",
@@ -130,20 +135,27 @@ const Index = () => {
 
 	const subHeaderComponentMemo = useMemo(() => {
 		return (
-			<div
-				id="basic-1_filter"
-				className="dataTables_filter d-flex align-items-center">
-				<Label className="me-2">Search:</Label>
-				<Input
-					onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-						setFilterText(e.target.value)
-					}
-					type="search"
-					value={filterText}
-				/>
-			</div>
+			<>
+				<div
+					id="basic-1_filter"
+					className="dataTables_filter d-flex align-items-center">
+					<Label className="me-2">Search:</Label>
+					<Input
+						onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+							setFilterText(e.target.value)
+						}
+						type="search"
+						value={filterText}
+					/>
+				</div>
+				<div style={{ paddingLeft: "10px" }}>
+					<h1 style={{ fontSize: "15px" }}>
+						Total Number Of Vandor is: <span style={{color:"red"}}>{selectVandor}</span>
+					</h1>
+				</div>
+			</>
 		);
-	}, [filterText]);
+	}, [filterText, selectVandor]);
 
 	useEffect(() => {
 		fetchData();
