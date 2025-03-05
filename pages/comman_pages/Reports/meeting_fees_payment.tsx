@@ -259,6 +259,8 @@ const MeetingFeesPayment = () => {
 	const [totalRows, setTotalRows] = useState<number>(0);
 	const urlParams = new URLSearchParams(window.location.search);
 	const [chaptersData, setselectChapter] = useState<any>([]);
+	const [currentMonthTotal, setcurrentMonthTotal] = useState<any>("");
+	const [todayTotal, settodayTotal] = useState<any>("");
 	const [selectchaptersData, setSelectchaptersData] = useState<any>("");
 	const [ltData, setLtData] = useState<any>({});
 	const role = localStorage.getItem("role");
@@ -451,7 +453,9 @@ const MeetingFeesPayment = () => {
 						Search
 					</Btn>
 				</div>
-				<div className="dataTables_filter d-flex align-items-center">
+				<div
+					className="dataTables_filter d-flex align-items-center"
+					style={{ paddingLeft: "10px" }}>
 					<Label>Chapter:</Label>
 					<Input
 						type="select"
@@ -466,9 +470,28 @@ const MeetingFeesPayment = () => {
 							))}
 					</Input>
 				</div>
+				<div style={{ paddingLeft: "10px" }}>
+					<p style={{ fontSize: "15px", fontWeight: "bold" }}>
+						Total Meeting Fees Paid This Month :{" "}
+						<span style={{ color: "blue" }}>{currentMonthTotal}</span>
+					</p>
+				</div>
+				<div style={{ paddingLeft: "10px" }}>
+					<p style={{ fontSize: "15px", fontWeight: "bold" }}>
+						Total Meeting Fees Paid Today :{" "}
+						<span style={{ color: "blue" }}>{currentMonthTotal}</span>
+					</p>
+				</div>
 			</>
 		);
-	}, [filterText, dateRange, selectchaptersData, chaptersData]);
+	}, [
+		filterText,
+		dateRange,
+		selectchaptersData,
+		chaptersData,
+		currentMonthTotal,
+		todayTotal,
+	]);
 
 	const fetchData2 = async () => {
 		if (typeof window !== "undefined" && window.localStorage) {
@@ -495,8 +518,29 @@ const MeetingFeesPayment = () => {
 			}
 		}
 	};
+	const fetchData3 = async () => {
+		if (typeof window !== "undefined" && window.localStorage) {
+			const config = {
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			};
+
+			try {
+				const response = await axios.get("/api/paid-meeting-fees", config);
+				const currentMonthTotal = response.data.currentMonthTotal;
+				console.log(currentMonthTotal, "meeting fees");
+				const todayTotal = response.data.todayTotal;
+				setcurrentMonthTotal(currentMonthTotal);
+				settodayTotal(todayTotal);
+			} catch (error) {
+				console.error("Error fetching chapters data:", error);
+			}
+		}
+	};
 	useEffect(() => {
 		fetchData2();
+		fetchData3();
 	}, [token, ltData]);
 
 	useEffect(() => {

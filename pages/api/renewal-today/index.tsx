@@ -34,7 +34,7 @@ export default async function handler(
           AND status = 'captured'
           AND payment_type = 'membership fees'
         `);
-        // conn.end();
+        conn.end();
         res.status(200).json(rows[0]);
       } catch (error) {
         console.error("Error fetching renewal data:", error);

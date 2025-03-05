@@ -1,8 +1,19 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import DataTable, { TableColumn } from "react-data-table-component";
+import PiChart from "./PiChartPopUp";
 
-export default function PerUserExpenseTable() {
+type PerUserExpenseTableProps = {
+	open: boolean;
+	setopen: React.Dispatch<React.SetStateAction<boolean>>;
+	setSelectedChapter: React.Dispatch<React.SetStateAction<string>>;
+};
+
+export default function PerUserExpenseTable({
+	open,
+	setopen,
+	setSelectedChapter,
+}: PerUserExpenseTableProps) {
 	interface Expense {
 		id: number;
 		chapter_name: string;
@@ -11,16 +22,21 @@ export default function PerUserExpenseTable() {
 	const [expenses, setExpenses] = useState<Expense[]>([]);
 	const [loading, setLoading] = useState(true);
 
+	const handleClick = (chapterName: string) => {
+		setSelectedChapter(chapterName);
+		setopen(true);
+	};
+
 	// Define the columns for DataTable
 	const expenseColumns = [
 		{
 			name: "Chapter Name",
 			selector: (row: Expense) => (
-				<Link
-					href={`/comman_pages/expense/list_expense?chapter_id=${row.id}`}
-					style={{ color: "blue" }}>
+				<span
+					style={{ color: "blue", cursor: "pointer" }}
+					onClick={() => handleClick(row.chapter_name)}>
 					{row.chapter_name}
-				</Link>
+				</span>
 			),
 			sortable: true,
 			sortFunction: (a: any, b: any) =>
@@ -54,15 +70,17 @@ export default function PerUserExpenseTable() {
 	}
 
 	return (
-		<DataTable
-			pagination
-			subHeader
-			highlightOnHover
-			striped
-			persistTableHead
-			columns={expenseColumns}
-			data={expenses || []}
-		/>
+		<>
+			<DataTable
+				pagination
+				subHeader
+				highlightOnHover
+				striped
+				persistTableHead
+				columns={expenseColumns}
+				data={expenses || []}
+			/>
+		</>
 	);
 }
 

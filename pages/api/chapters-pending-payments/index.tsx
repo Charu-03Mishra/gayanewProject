@@ -2,19 +2,11 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { connect } from "../../../utils/db";
 import checkUserAuth from "../auth";
 
-const handleError = (
-  res: NextApiResponse,
-  statusCode: number,
-  message: string
-) => {
+const handleError = (res: NextApiResponse, statusCode: number, message: string) => {
   res.status(statusCode).json({ error: message });
 };
 
-export default async function handler(
-  req: any,
-  res: NextApiResponse,
-  next: Function
-) {
+export default async function handler(req: any, res: NextApiResponse, next: Function) {
   const { method, query } = req;
 
   if (method === "GET") {
@@ -23,13 +15,7 @@ export default async function handler(
 
   switch (method) {
     case "GET":
-      const {
-        page = "1",
-        pageSize = "10",
-        search = "",
-        startDate = "",
-        endDate = "",
-      } = query as any;
+      const { page = "1", pageSize = "10", search = "" } = query as any;
 
       const parsedPage = parseInt(page, 10) || 1;
       const parsedPageSize = parseInt(pageSize, 10) || 10;
@@ -38,40 +24,31 @@ export default async function handler(
       try {
         const conn = await connect();
 
-        const fields = [
-          "CONCAT(m.first_name, ' ', m.last_name)",
-          "c.chapter_name",
-        ];
-
+        const fields = ["CONCAT(m.first_name, ' ', m.last_name)", "c.chapter_name"];
         let whereClauses = [];
         let queryParams = [];
 
-        // Constructing search condition
         if (search) {
-          whereClauses.push(
-            `(${fields.map((field) => `${field} LIKE ?`).join(" OR ")})`
-          );
+          whereClauses.push(`(${fields.map((field) => `${field} LIKE ?`).join(" OR ")})`);
           queryParams.push(...fields.map(() => searchQuery));
         }
 
         if (req.user[0][0].permission_SGDC) {
-            whereClauses.push('m.chapter_id IN (?)');
-            const querySGDC = `SELECT chapter_id FROM sgdc WHERE id = ?`;
-            const [sgdcRows]: any = await conn.query(querySGDC, [req.user[0][0].permission_SGDC]);
-            const chapterId = JSON.parse(sgdcRows[0].chapter_id);
-            queryParams.push(chapterId);
-          } else if (req.user[0][0].permission_LT) {
-            whereClauses.push(`m.chapter_id = ?`);
-            const queryLT = `SELECT chapter_id FROM leadership WHERE id = ?`;
-            const [ltRows]: any = await conn.query(queryLT, [req.user[0][0].permission_LT]);
-            const chapterId = ltRows[0].chapter_id;
-            queryParams.push(chapterId);
-          }
+          whereClauses.push("m.chapter_id IN (?)");
+          const querySGDC = `SELECT chapter_id FROM sgdc WHERE id = ?`;
+          const [sgdcRows]: any = await conn.query(querySGDC, [req.user[0][0].permission_SGDC]);
+          const chapterId = JSON.parse(sgdcRows[0].chapter_id);
+          queryParams.push(chapterId);
+        } else if (req.user[0][0].permission_LT) {
+          whereClauses.push(`m.chapter_id = ?`);
+          const queryLT = `SELECT chapter_id FROM leadership WHERE id = ?`;
+          const [ltRows]: any = await conn.query(queryLT, [req.user[0][0].permission_LT]);
+          const chapterId = ltRows[0].chapter_id;
+          queryParams.push(chapterId);
+        }
 
-        const whereClause =
-          whereClauses.length > 0 ? `WHERE ${whereClauses.join(" AND ")}` : "";
+        const whereClause = whereClauses.length > 0 ? `WHERE ${whereClauses.join(" AND ")}` : "";
 
-        // Query to fetch paginated data
         const query = `
           SELECT 
             m.id AS member_id,
@@ -81,81 +58,32 @@ export default async function handler(
             c.meeting_day,
             c.id AS chapter_id,
             c.chapter_name AS chapter_name,
-            SUM(CASE WHEN DAYNAME(DATE_ADD(
-                COALESCE(m.mf_end_date), 
-                INTERVAL n.number DAY)) = c.meeting_day THEN 1 ELSE 0 END) AS meeting_count
-          FROM 
-            members m
-          JOIN 
-            chapters c ON m.chapter_id = c.id
-          JOIN 
-            (SELECT @row := @row + 1 AS number FROM 
-                (SELECT 0 UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3) t1,
-                (SELECT 0 UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3) t2,
-                (SELECT 0 UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3) t3,
-                (SELECT 0 UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3) t4,
-                (SELECT 0 UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3) t5,
-                (SELECT 0 UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3) t6,
-                (SELECT 0 UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3) t7,
-                (SELECT @row := -1) t) n
-                ON DATE_ADD(
-                        COALESCE(m.mf_end_date),
-                        INTERVAL n.number DAY
-                ) <= CURDATE()
+            SUM(CASE WHEN DAYNAME(DATE_ADD(COALESCE(m.mf_end_date), INTERVAL n.number DAY)) = c.meeting_day THEN 1 ELSE 0 END) AS meeting_count
+          FROM members m
+          JOIN chapters c ON m.chapter_id = c.id
+          JOIN (
+              SELECT @row := @row + 1 AS number FROM 
+              (SELECT 0 UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3) t1,
+              (SELECT 0 UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3) t2,
+              (SELECT 0 UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3) t3,
+              (SELECT @row := -1) t) n
+              ON DATE_ADD(COALESCE(m.mf_end_date), INTERVAL n.number DAY) <= CURDATE()
           ${whereClause}
-          GROUP BY 
-            c.id
+          GROUP BY m.id, m.first_name, m.last_name, m.chapter_id, m.mf_end_date, c.meeting_day, c.id, c.chapter_name
           LIMIT ? OFFSET ?
         `;
 
-        // Query to count total items
         const countQuery = `
-          SELECT COUNT(*) AS totalItems
-          FROM (
-            SELECT 
-              m.id AS member_id,
-              CONCAT(m.first_name, ' ', m.last_name) AS member_name,
-              m.chapter_id AS member_chapter_id,
-              m.mf_end_date,
-              c.meeting_day,
-              c.id AS chapter_id,
-              c.chapter_name AS chapter_name,
-              SUM(CASE WHEN DAYNAME(DATE_ADD(
-                  COALESCE(m.mf_end_date), 
-                  INTERVAL n.number DAY)) = c.meeting_day THEN 1 ELSE 0 END) AS meeting_count
-            FROM 
-              members m
-            JOIN 
-              chapters c ON m.chapter_id = c.id
-            JOIN 
-              (SELECT @row := @row + 1 AS number FROM 
-                  (SELECT 0 UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3) t1,
-                  (SELECT 0 UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3) t2,
-                  (SELECT 0 UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3) t3,
-                  (SELECT 0 UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3) t4,
-                  (SELECT 0 UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3) t5,
-                  (SELECT 0 UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3) t6,
-                  (SELECT 0 UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3) t7,
-                  (SELECT @row := -1) t) n
-                  ON DATE_ADD(
-                          COALESCE(m.mf_end_date),
-                          INTERVAL n.number DAY
-                  ) <= CURDATE()
+          SELECT COUNT(*) AS totalItems FROM (
+            SELECT m.id FROM members m
+            JOIN chapters c ON m.chapter_id = c.id
             ${whereClause}
-            GROUP BY 
-              c.id
+            GROUP BY m.id
           ) AS subquery
         `;
 
-        const [rows]: any = await conn.query(query, [
-          ...queryParams,
-          parsedPageSize,
-          (parsedPage - 1) * parsedPageSize,
-        ]);
-
+        const [rows]: any = await conn.query(query, [...queryParams, parsedPageSize, (parsedPage - 1) * parsedPageSize]);
         const [countResult]: any = await conn.query(countQuery, queryParams);
-
-        // conn.end();
 
         const totalItems = countResult[0].totalItems;
         const totalPages = Math.ceil(totalItems / parsedPageSize);

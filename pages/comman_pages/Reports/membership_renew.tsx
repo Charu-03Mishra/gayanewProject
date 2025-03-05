@@ -30,6 +30,8 @@ const MembershipRenew = () => {
 	// const [selectedchapters, setselectdChapter] = useState<any>("");
 	const [currentPage, setCurrentPage] = useState<number>(1);
 	const [totalRows, setTotalRows] = useState<number>(0);
+	const [TotalRenewalsToday, setTotalRenewalsToday] = useState<number>(0);
+	const [CurrentMonthsToday, setCurrentMonthsToday] = useState<number>(0);
 
 	const columns: any = [
 		{
@@ -176,7 +178,9 @@ const MembershipRenew = () => {
 						Search
 					</Btn>
 				</div>
-				<div className="dataTables_filter d-flex align-items-center">
+				<div
+					className="dataTables_filter d-flex align-items-center"
+					style={{ paddingLeft: "10px" }}>
 					<Label>Chapter:</Label>
 					<Input
 						type="select"
@@ -191,9 +195,28 @@ const MembershipRenew = () => {
 							))}
 					</Input>
 				</div>
+				<div>
+					<p style={{ fontSize: "15px", fontWeight: "bold" }}>
+						Total Renewals Today:{" "}
+						<span style={{ color: "blue" }}>{TotalRenewalsToday}</span>
+					</p>
+				</div>
+				<div style={{ paddingLeft: "10px" }}>
+					<p style={{ fontSize: "15px", fontWeight: "bold" }}>
+						Total Renewals This Month:{" "}
+						<span style={{ color: "blue" }}>{CurrentMonthsToday}</span>
+					</p>
+				</div>
 			</>
 		);
-	}, [filterText, dateRange, chaptersData, selectchaptersData]);
+	}, [
+		filterText,
+		dateRange,
+		chaptersData,
+		selectchaptersData,
+		TotalRenewalsToday,
+		CurrentMonthsToday,
+	]);
 
 	const fetchData2 = async () => {
 		if (typeof window !== "undefined" && window.localStorage) {
@@ -220,8 +243,31 @@ const MembershipRenew = () => {
 			}
 		}
 	};
+	const fetchData3 = async () => {
+		if (typeof window !== "undefined" && window.localStorage) {
+			const config = {
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			};
+
+			try {
+				const response = await axios.get("/api/membership-renewal", config);
+				const Total_Renewals_Today = response.data.today;
+				const current_month = response.data.current_month;
+				setTotalRenewalsToday(Total_Renewals_Today);
+				setCurrentMonthsToday(current_month);
+			} catch (error) {
+				console.error("Error fetching chapters data:", error);
+			}
+		}
+	};
+	console.log(TotalRenewalsToday);
+	console.log(CurrentMonthsToday);
+
 	useEffect(() => {
 		fetchData2();
+		fetchData3();
 	}, [token, ltData]);
 
 	const fetchData = async (

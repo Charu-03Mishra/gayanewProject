@@ -185,6 +185,7 @@ export default async function handler(
 					"members.first_name",
 					"members.last_name",
 					"visitor.visitor_name",
+					"visitor.membership_status"
 				];
 
 				let whereClauses = [];
@@ -247,6 +248,10 @@ export default async function handler(
             visitor.visitor_name, 
             CONCAT(members.first_name, ' ', members.last_name)
           ) AS member_name,
+		  IF(payments.payment_type = 'visitor fees', 
+            visitor.membership_status,
+			NULL
+          ) AS isConverted,
           IF(payments.payment_type = 'visitor fees', 
               visitor.gst, 
               members.gst_no

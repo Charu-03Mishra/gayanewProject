@@ -11,6 +11,7 @@ import jsPDF from "jspdf";
 import "jspdf-autotable";
 import { DateRangePicker } from "rsuite";
 import { ValueType } from "rsuite/esm/DateRangePicker";
+import { log } from "console";
 
 const TableAction = ({ row }: any) => {
 	const generatePDF = async () => {
@@ -263,6 +264,8 @@ const CDPSPayment = () => {
 	const [ltData, setLtData] = useState<any>({});
 	const [chaptersData, setselectChapter] = useState<any>([]);
 	const [selectchaptersData, setSelectchaptersData] = useState<any>("");
+	const [CDPS, setCDPS] = useState<any>("");
+
 	const urlParams = new URLSearchParams(window.location.search);
 	const role = localStorage.getItem("role");
 	const columns: any = [
@@ -393,9 +396,15 @@ const CDPSPayment = () => {
 							))}
 					</Input>
 				</div>
+				<div>
+					<p style={{ fontSize: "15px", fontWeight: "bold" }}>
+						Total Members Paid CDPS:{" "}
+						<span style={{ color: "blue" }}>{CDPS}</span>
+					</p>
+				</div>
 			</>
 		);
-	}, [filterText, dateRange, chaptersData, selectchaptersData]);
+	}, [filterText, dateRange, chaptersData, selectchaptersData, CDPS]);
 	console.log(selectchaptersData);
 
 	const handleDownloadCSV = async () => {
@@ -490,6 +499,9 @@ const CDPSPayment = () => {
 				});
 
 				setData(responseFilter?.data.payments);
+				const CDPS: any = responseFilter.data.pagination.totalItems;
+				setCDPS(CDPS);
+
 				setCurrentPage(responseFilter.data.pagination?.currentPage);
 				setTotalRows(responseFilter.data.pagination?.totalItems);
 			} catch (error) {

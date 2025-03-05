@@ -23,6 +23,7 @@ import ExpensePieChart from "../components/ExpensePieChart";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { log } from "node:console";
+import PiChart from "../components/PiChartPopUp";
 
 const areaChartOptions = {
 	chart: {
@@ -107,13 +108,14 @@ const Index = () => {
 	const [kittyData, setKittyData] = useState<any>([]);
 	const [topSellData, setTopSellData] = useState<any[]>([]);
 	const [paymentData, setPaymentData] = useState([]);
+	const [open, setOpen] = useState<boolean>(false);
+	const [selectedChapter, setSelectedChapter] = useState<any>("");
+
 	const [pieChartData, setPieChartData] = useState<any>({
 		paidAdvance: 0,
 		paidCurrent: 0,
 		pendingCount: 0,
 	});
-
-	console.log(chaptersData, "chaptersData");
 
 	const currentDate = new Date();
 	const lastFourMonths: any = [];
@@ -448,6 +450,11 @@ const Index = () => {
 			selector: (row: any) => row.april,
 			sortable: true,
 		},
+		{
+			name: "Management Fees",
+			selector: (row: any) => row.management_charges_total,
+			sortable: true,
+		},
 	];
 
 	const chapterFetchData = async () => {
@@ -575,7 +582,6 @@ const Index = () => {
 
 		fetchPaymentData();
 	}, [token, chaptersData]);
-	console.log(chaptersData);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -588,6 +594,7 @@ const Index = () => {
 
 				try {
 					const response = await axios.get("/api/renewal-today", config);
+					console.log(response.data, "renewal-today");
 					const paidMeetingFeesResponse = await axios.get(
 						"/api/paid-meeting-fees-today",
 						config
@@ -619,6 +626,11 @@ const Index = () => {
 					const outstandingMeetingFees = await axios.get(
 						"/api/outstanding-meeting-fees",
 						config
+					);
+					const visitorFees = await axios.get("/api/visitor-payments", config);
+					console.log(
+						visitorFees?.data?.totalVisitorsThisMonth,
+						"visitor patments"
 					);
 
 					setTopSellData([
@@ -732,6 +744,26 @@ const Index = () => {
 							image: "shopping1.png",
 							count: outstandingMeetingFees.data[0]?.total_due_amount,
 							icon: "fa-arrow-down",
+							color: "danger",
+							percentage: "-10.02%",
+							detail: "Compared to Aug 2024",
+							chartId: "order-value",
+							chartData: {
+								series: [
+									{
+										name: "Renewal Today",
+										data: [response.data.length],
+									},
+								],
+								options: areaChartOptions,
+							},
+						},
+						{
+							class: "total-sells-2",
+							title: "Total Visitors This Month",
+							image: "shopping1.png",
+							icon: "fa-arrow-down",
+							count: visitorFees?.data?.totalVisitorsThisMonth,
 							color: "danger",
 							percentage: "-10.02%",
 							detail: "Compared to Aug 2024",
@@ -912,7 +944,11 @@ const Index = () => {
 								</CardHeader>
 								<CardBody>
 									<div className="table-responsive">
-										<PerUserExpenseTable />
+										<PerUserExpenseTable
+											open={open}
+											setopen={setOpen}
+											setSelectedChapter={setSelectedChapter}
+										/>
 									</div>
 								</CardBody>
 							</Card>
@@ -941,6 +977,7 @@ const Index = () => {
 						</Col>
 					</Row>
 				</Container>
+				<PiChart open={open} setopen={setOpen} selectedChapter={selectedChapter} />
 			</div>
 			{/* </ProtectedRoute> */}
 		</Layout>

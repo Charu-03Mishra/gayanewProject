@@ -12,6 +12,7 @@ import jsPDF from "jspdf";
 import "jspdf-autotable";
 import { DateRangePicker } from "rsuite";
 import { ValueType } from "rsuite/esm/DateRangePicker";
+import { log } from "node:console";
 
 const TableAction = ({ row }: any) => {
 	const generatePDF = async () => {
@@ -259,6 +260,8 @@ const VisitorPayment = () => {
 	const [perPage, setPerPage] = useState<number>(10);
 	const [currentPage, setCurrentPage] = useState<number>(1);
 	const [totalRows, setTotalRows] = useState<number>(0);
+	const [TotalVisitorsToday, setTotalVisitorsToday] = useState<number>(0);
+	const [ThisMonth, setThisMonth] = useState<number>(0);
 
 	const columns: any = [
 		{
@@ -318,6 +321,12 @@ const VisitorPayment = () => {
 					</span>
 				),
 			sortable: true,
+		},
+		{
+			name: "Membership Status ",
+			selector: (row: any) => row.membership_status,
+			sortable: true,
+			width: "150px",
 		},
 		{
 			name: "Action",
@@ -434,9 +443,28 @@ const VisitorPayment = () => {
 							))}
 					</Input>
 				</div>
+				<div style={{ paddingLeft: "10px" }}>
+					<p style={{ fontSize: "15px", fontWeight: "bold" }}>
+						Total Visitors Today:{" "}
+						<span style={{ color: "blue" }}>{TotalVisitorsToday}</span>
+					</p>
+				</div>
+				<div style={{ paddingLeft: "10px" }}>
+					<p style={{ fontSize: "15px", fontWeight: "bold" }}>
+						Total Visitors This Month:{" "}
+						<span style={{ color: "blue" }}>{ThisMonth}</span>
+					</p>
+				</div>
 			</>
 		);
-	}, [filterText, dateRange, chaptersData, selectchaptersData]);
+	}, [
+		filterText,
+		dateRange,
+		chaptersData,
+		selectchaptersData,
+		TotalVisitorsToday,
+		ThisMonth,
+	]);
 
 	const fetchData2 = async () => {
 		if (typeof window !== "undefined" && window.localStorage) {
@@ -463,8 +491,29 @@ const VisitorPayment = () => {
 			}
 		}
 	};
+	const fetchData3 = async () => {
+		if (typeof window !== "undefined" && window.localStorage) {
+			const config = {
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			};
+
+			try {
+				const response = await axios.get("/api/visitor-payments", config);
+				const totalVisitorsToday = response.data.totalVisitorsToday;
+				const thisMonth = response.data.totalVisitorsThisMonth;
+
+				setTotalVisitorsToday(totalVisitorsToday);
+				setThisMonth(thisMonth);
+			} catch (error) {
+				console.error("Error fetching chapters data:", error);
+			}
+		}
+	};
 	useEffect(() => {
 		fetchData2();
+		fetchData3();
 	}, [token, ltData]);
 
 	const fetchData = async (

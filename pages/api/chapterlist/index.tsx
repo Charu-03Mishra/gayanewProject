@@ -25,6 +25,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
 		// Release connection back to pool
 		conn.release();
+		
 
 		// Send response
 		res.status(200).json({ chapters: rows });

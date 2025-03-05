@@ -29,12 +29,10 @@ export default async function handler(req: any, res: any, next: Function) {
 				const [rows]: any = await conn.query(`
           SELECT 
             COUNT(*) AS totalUsers, 
-            SUM(CASE WHEN DATE(createdAt) = CURDATE() THEN amount ELSE 0 END) AS todayTotalAmount, 
-            SUM(CASE WHEN MONTH(createdAt) = MONTH(CURDATE()) AND YEAR(createdAt) = YEAR(CURDATE()) THEN amount ELSE 0 END) AS currentMonthTotalAmount,
-            COUNT(DISTINCT CASE WHEN DATE(createdAt) = CURDATE() THEN member_id END) AS totalVisitorsToday,
-            COUNT(DISTINCT CASE WHEN MONTH(createdAt) = MONTH(CURDATE()) AND YEAR(createdAt) = YEAR(CURDATE()) THEN member_id END) AS totalVisitorsThisMonth
+            SUM(CASE WHEN DATE(createdAt) = CURDATE() THEN amount ELSE 0 END) AS todayTotal, 
+            SUM(CASE WHEN MONTH(createdAt) = MONTH(CURDATE()) AND YEAR(createdAt) = YEAR(CURDATE()) THEN amount ELSE 0 END) AS currentMonthTotal 
           FROM payments 
-          WHERE payment_type = "visitor fees"
+          WHERE payment_type = "meeting fees"
         `);
 				// conn.end();
 				res.status(200).json(rows[0]);
