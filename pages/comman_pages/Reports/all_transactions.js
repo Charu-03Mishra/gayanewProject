@@ -516,7 +516,66 @@ const AllTrasaction = () => {
 	const subHeaderComponentMemo = useMemo(() => {
 		return (
 			<>
-				<div className="field mt-1">
+				<div className="Input-content">
+					<div className="inputcontent">
+						<Input
+							onChange={handleOnChangeSearch}
+							type="search"
+							placeholder="Search By..."
+							value={filterText}
+						/>
+						<i
+							className="fa fa-search"
+							aria-hidden="true"
+							onClick={handleSearchClick}></i>
+					</div>
+				</div>
+				<div className="filter-datas">
+					<div>
+						<div className="date-data">
+							{/* Date Range */}
+							<FormGroup className="form-data">
+								<DateRangePicker
+									value={dateRange}
+									onChange={handleDateFilter}
+									format="yyyy-MM-dd"
+									placeholder="Date Range"
+								/>
+							</FormGroup>
+
+							{/* Dropdown for Chapters */}
+							<FormGroup className="form-data">
+								<Input
+									type="select"
+									value={selectchaptersData}
+									onChange={handleChapterChange}>
+									<option value="">Chapters</option>
+									{Array?.isArray(chaptersData) &&
+										chaptersData?.map((option, index) => (
+											<option key={index} value={option.id}>
+												{option?.chapter_name}
+											</option>
+										))}
+								</Input>
+							</FormGroup>
+							<FormGroup className="form-data">
+								<Input
+									type="select"
+									value={selectpaymentData}
+									onChange={handlepaymentChange}>
+									<option value="">Payment Type</option>
+									{Array?.isArray(paymenttype) &&
+										paymenttype?.map((option, index) => (
+											<option key={index} value={option.value}>
+												{option?.label}
+											</option>
+										))}
+								</Input>
+							</FormGroup>
+						</div>
+					</div>
+				</div>
+				{/* <div className="field mt-1">
 					<FormGroup className="me-3">
 						<Label>Date Range:</Label>
 						<DateRangePicker
@@ -525,8 +584,8 @@ const AllTrasaction = () => {
 							format="yyyy-MM-dd"
 						/>
 					</FormGroup>
-				</div>
-				<div className="dataTables_filter d-flex align-items-center">
+				</div> */}
+				{/* <div className="dataTables_filter d-flex align-items-center">
 					<Label className="me-2">Search:</Label>
 					<Input
 						onChange={handleOnChangeSearch}
@@ -536,8 +595,8 @@ const AllTrasaction = () => {
 					<Btn color="primary" onClick={handleSearchClick} className="ms-2">
 						Search
 					</Btn>
-				</div>
-				<div className="dataTables_filter d-flex align-items-center">
+				</div> */}
+				{/* <div className="dataTables_filter d-flex align-items-center">
 					<Input
 						type="select"
 						value={selectchaptersData}
@@ -550,8 +609,8 @@ const AllTrasaction = () => {
 								</option>
 							))}
 					</Input>
-				</div>
-				<div className="dataTables_filter d-flex align-items-center">
+				</div> */}
+				{/* <div className="dataTables_filter d-flex align-items-center">
 					<Input
 						type="select"
 						value={selectpaymentData}
@@ -564,7 +623,7 @@ const AllTrasaction = () => {
 								</option>
 							))}
 					</Input>
-				</div>
+				</div> */}
 			</>
 		);
 	}, [

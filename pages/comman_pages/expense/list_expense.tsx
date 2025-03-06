@@ -604,26 +604,9 @@ const Index: React.FC = () => {
 	const subHeaderComponentMemo = useMemo(() => {
 		return (
 			<>
-				<div
-					className=""
-					style={{
-						display: "flex",
-						justifyContent: "center",
-						alignItems: "center",
-
-						width: "100%",
-					}}>
-					<div
-						style={{
-							display: "flex",
-							justifyContent: "center",
-							gap: "20px",
-							alignItems: "center",
-
-							width: "400px",
-						}}>
+				<div className="Input-content">
+					<div className="inputcontent">
 						<Input
-							style={{ width: "300px" }}
 							onChange={handleOnChangeSearch}
 							type="search"
 							value={filterText}
@@ -633,34 +616,23 @@ const Index: React.FC = () => {
 							aria-hidden="true"
 							onClick={handleSearchClick}></i>
 					</div>
-					{/* <Btn color="primary"  className="ms-2">
-							Search
-						</Btn> */}
 				</div>
 				{/* Dropdown for Expense Type */}
-				<div className="filter-data">
-					<div className="filter-data-select">
-						<div className="lable">
-							<Label>Type:</Label>
-						</div>
-						<div>
+				<div className="filter-datas">
+					<div className="date-data">
+						<FormGroup className="form-data">
 							<Input type="select" onChange={handleExpenseTypeChange}>
-								<option value="">All</option>
+								<option value="">Meeting Type</option>
 								<option value="Meeting">Meeting</option>
 								<option value="Others">Others</option>
 							</Input>
-						</div>
-					</div>
-					<div className="filter-data-select">
-						<div className="lable">
-							<Label>Chapter:</Label>
-						</div>
-						<div>
+						</FormGroup>
+						<FormGroup className="form-data">
 							<Input
 								type="select"
 								value={selectedchapters}
 								onChange={handleChapterChange}>
-								<option value="">All</option>
+								<option value="">Chapters</option>
 								{Array.isArray(chaptersData) &&
 									chaptersData.map((option: any, index: any) => (
 										<option key={index} value={option.id}>
@@ -668,59 +640,44 @@ const Index: React.FC = () => {
 										</option>
 									))}
 							</Input>
-						</div>
-					</div>
-					{/* Dropdown for Paid Status */}
-					<div className="filter-data-select">
-						<div className="lable">
-							<Label>Paid Status:</Label>
-						</div>
-						<div>
+						</FormGroup>
+
+						<FormGroup className="form-data">
 							<Input type="select" onChange={handleStatusPaidChange}>
-								<option value="">All</option>
+								<option value="">Paid Status</option>
 								<option value="Paid">Paid</option>
 								<option value="UnPaid">Unpaid</option>
 							</Input>
-						</div>
-					</div>
+						</FormGroup>
 
-					<div className="filter-data-select">
-						<div className="lable">
-							<Label>Expense Head:</Label>
-						</div>
-						<div>
+						<FormGroup className="form-data">
 							<Input type="select" onChange={handleExpanceHeadChange}>
-								<option value="">All</option>
+								<option value="">Expance Head</option>
 								{expenseHeadOptions.map((expance) => (
 									<option value={expance.value}>{expance.label}</option>
 								))}
 							</Input>
-						</div>
-					</div>
-					<div className="filter-data-select">
-						<div className="lable">
-							<Label>Status:</Label>
-						</div>
-						<div>
+						</FormGroup>
+
+						<FormGroup className="form-data">
 							<Input type="select" onChange={handleStatusChange}>
-								<option value="">All</option>
+								<option value="">Approved Status</option>
 								{StatusOptions.map((status) => (
 									<option value={status.value}>{status.label}</option>
 								))}
 							</Input>
-						</div>
-					</div>
-					<div className="filter-data-select">
-						<div className="lable">
-							<Label>Date Range:</Label>
-						</div>
-						<div>
-							<DateRangePicker
-								value={dateRange}
-								onChange={handleDateFilter}
-								format="yyyy-MM-dd"
-							/>
-						</div>
+						</FormGroup>
+
+						<FormGroup className="form-data">
+							<div>
+								<DateRangePicker
+									value={dateRange}
+									onChange={handleDateFilter}
+									format="yyyy-MM-dd"
+									placeholder="Meeting Date"
+								/>
+							</div>
+						</FormGroup>
 					</div>
 				</div>
 			</>

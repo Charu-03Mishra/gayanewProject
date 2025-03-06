@@ -20,6 +20,7 @@ export default async function handler(
 		await checkUserAuth(req, res, next);
 	}
 	const { is_launched }: any = req.query;
+	const { chapter_name }: any = req.query;
 
 	switch (method) {
 		case "GET":
@@ -55,14 +56,18 @@ export default async function handler(
 				}
 
 				// Check for `is_launched`
-				if (
-					is_launched !== undefined &&
-					(is_launched == 0 || is_launched == 1)
-				) {
-					whereClauses.push("chapters.is_launched = ?");
-					queryParams.push(is_launched);
-				}
+				// if (
+				// 	is_launched !== undefined &&
+				// 	(is_launched == 0 || is_launched == 1)
+				// ) {
+				// 	whereClauses.push("chapters.is_launched = ?");
+				// 	queryParams.push(is_launched);
+				// }
 
+				if (chapter_name && chapter_name !== "" && chapter_name !== "all") {
+					whereClauses.push("chapters.chapter_name = ?");
+					queryParams.push(chapter_name);
+				}
 				const whereClause =
 					whereClauses.length > 0 ? `WHERE ${whereClauses.join(" AND ")}` : "";
 
@@ -111,7 +116,6 @@ export default async function handler(
 		case "POST":
 			const {
 				chapter_id,
-				chapter_name,
 				coffee_table,
 				meeting_day,
 				meeting_time,
@@ -154,3 +158,4 @@ export default async function handler(
 			res.status(405).end(`Method ${method} Not Allowed`);
 	}
 }
+

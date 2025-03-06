@@ -10,7 +10,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useMemo, useState } from "react";
 import DataTable from "react-data-table-component";
-import { Card, CardBody, Col, Input, Label, Row } from "reactstrap";
+import { Card, CardBody, Col, FormGroup, Input, Label, Row } from "reactstrap";
 import { toast } from "react-toastify";
 import Btn from "../../components/button";
 
@@ -55,7 +55,12 @@ const ListChapter = () => {
 	const [totalRows, setTotalRows] = useState<number>(0);
 	const [searchTerm, setSearchTerm] = useState("");
 	const urlParams = new URLSearchParams(window.location.search);
-
+	const [ltData, setLtData] = useState<any>({});
+	const [chaptersData, setselectChapter] = useState<any>([]);
+	const [selectchaptersData, setSelectchaptersData] = useState<any>("");
+	const [statusActiveCount, setActiveStatusCount] = useState<any>("");
+	const [statusNonActiveCount, setNonActiveStatusCount] = useState<any>("");
+	const role = localStorage.getItem("role");
 	// const handleOpeningBalanceUpdate = async (
 	//   values: any,
 	//   actions: { resetForm: () => void }
@@ -237,97 +242,146 @@ const ListChapter = () => {
 
 	console.log(data, "data");
 	const handleChapterChange = (e: any) => {
-		setchapterStatus(e.target.value);
+		setSelectchaptersData(e.target.value);
 	};
 	const subHeaderComponentMemo = useMemo(() => {
 		return (
 			<>
-				<div
-					className=""
-					style={{
-						display: "flex",
-						justifyContent: "center",
-						alignItems: "center",
-
-						width: "100%",
-					}}>
-					<div
-						style={{
-							display: "flex",
-							justifyContent: "center",
-							gap: "20px",
-							alignItems: "center",
-							width: "400px",
-						}}>
+				<div className="Input-content">
+					<div className="inputcontent">
 						<Input
-							style={{ width: "300px" }}
 							onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
 								setFilterText(e.target.value)
 							}
 							type="search"
+							placeholder="Search By..."
 							value={filterText}
 						/>
+						<i className="fa fa-search" aria-hidden="true"></i>
 					</div>
 				</div>
-				<div className="filter-data">
-					<div className="filter-data-select">
-						<div className="lable">
-							<Label>Chapter Status:</Label>
-						</div>
-						<div>
-							<Input type="select" onChange={handleChapterChange}>
-								<option value="">All</option>
-								{ChapterStatusOptions.map((status) => (
-									<option value={status.value}>{status.label}</option>
-								))}
+				<div className="filter-datas">
+					<div className="date-data">
+						<FormGroup className="form-data">
+							<Input
+								type="select"
+								value={selectchaptersData}
+								onChange={handleChapterChange}>
+								<option value="">Chapters</option>
+								{Array?.isArray(chaptersData) &&
+									chaptersData?.map((option: any, index: any) => (
+										<option key={index} value={option.chapter_name}>
+											{option?.chapter_name}
+										</option>
+									))}
 							</Input>
-						</div>
+						</FormGroup>
+					</div>
+				</div>
+				<div className="showActive">
+					<div className="TotalActive">
+						<span>Total Active Chapters: </span>
+						<span style={{ color: "green" }}>{statusActiveCount}</span>{" "}
+					</div>
+
+					<div className="TotalActive">
+						<span>Total Non-Active Chapters:</span>{" "}
+						<span style={{ color: "red" }}>{statusNonActiveCount}</span>
 					</div>
 				</div>
 			</>
 		);
-	}, [filterText]);
+	}, [
+		filterText,
+		chaptersData,
+		selectchaptersData,
+		statusActiveCount,
+		statusNonActiveCount,
+	]);
 
-	const fetchData = async (page: number, pageSize: number) => {
-		setCurrentPage(page);
-		setPerPage(pageSize);
+	useEffect(() => {
+		if (urlParams.get("chapter_name")) {
+			selectchaptersData(urlParams.get("chapter_name"));
+		}
+	}, [urlParams.get("chapter_name")]);
+
+	const fetchData2 = async () => {
+		if (typeof window !== "undefined" && window.localStorage) {
+			const config = {
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			};
+
+			try {
+				const response = await axios.get("/api/chapterlist", config);
+				let chapterFilterData: any;
+				if (role === "admin" || role === "vendor") {
+					chapterFilterData = response.data.chapters;
+					console.log(data, "data chapter");
+				} else {
+					chapterFilterData = response.data?.filter(
+						(value: any) => value?.id === ltData?.chapter_name
+					);
+				}
+				setselectChapter(chapterFilterData);
+			} catch (error) {
+				console.error("Error fetching chapters data:", error);
+			}
+		}
+	};
+	const fetchData3 = async () => {
+		if (typeof window !== "undefined" && window.localStorage) {
+			const config = {
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			};
+
+			try {
+				const response = await axios.get("/api/chapters-status-count", config);
+				setActiveStatusCount(response.data.totalActive);
+				setNonActiveStatusCount(response.data.totalNonActive);
+			} catch (error) {
+				console.error("Error fetching chapters data:", error);
+			}
+		}
+	};
+	useEffect(() => {
+		fetchData2();
+		fetchData3();
+	}, [token, ltData]);
+
+	console.log(statusActiveCount);
+
+	const fetchData = async (
+		page: number,
+		pageSize: number,
+		selectchaptersData: any
+	) => {
 		const params: any = {
 			page,
 			pageSize,
-			chapter_id: urlParams.get("chapter_id") || "all",
+			chapter_name:
+				selectchaptersData || urlParams.get("chapter_name") || "all",
 		};
 		if (searchTerm) params.search = searchTerm;
 
 		const url = new URL(`/api/chapters`, window.location.origin);
+		// if (selectchaptersData !== "") {
+		// 	url.searchParams.append("chapter_id", selectchaptersData);
+		// }
 		try {
-			const response = await axios.get(url.toString(), config);
+			const response = await axios.get(url.toString(), { params, ...config });
 			setData(response.data.chapters);
-			// const activeCount: any = response.data.members.filter(
-			// 	(row: any) =>
-			// 		row.membership_status === "Active" ||
-			// 		row.membership_status === "Inactive"
-			// ).length;
-			// const dropCount: any = response.data.members.filter(
-			// 	(row: any) => row.membership_status === "Drop"
-			// ).length;
-			// setactive(activeCount);
-			// setdrop(dropCount);
+			console.log(response.data.chapters);
+
 			setTotalRows(response.data.pagination?.totalItems);
-			setCurrentPage(response.data.pagination?.currentPage);
 		} catch (error) {
 			console.error("Error fetching chapters data:", error);
 		}
 	};
-	// const fetchData = async () => {
-	// 	if (typeof window !== "undefined" && window.localStorage) {
-	// 		try {
-	// 			const response = await axios.get("/api/chapters", config);
-	// 			setData(response.data);
-	// 		} catch (error) {
-	// 			console.error("Error fetching region data:", error);
-	// 		}
-	// 	}
-	// };
+
 	useEffect(() => {
 		const fetchRegionData = async () => {
 			if (typeof window !== "undefined" && window.localStorage) {
@@ -351,21 +405,21 @@ const ListChapter = () => {
 	const handleRowsPerPageChange = async (newRowsPerPage: any) => {
 		console.log("dfghjkl;");
 		if (!data.length) return;
-		fetchData(currentPage, newRowsPerPage);
+		fetchData(currentPage, newRowsPerPage, selectchaptersData);
 
 		setPerPage(newRowsPerPage);
 	};
 	const handlePageChange = (page: any) => {
 		console.log("first", page);
-		fetchData(page, perPage);
+		fetchData(page, perPage, selectchaptersData);
 		setCurrentPage(page);
 	};
 
 	console.log(currentPage);
 
 	useEffect(() => {
-		fetchData(currentPage, perPage);
-	}, [token, searchTerm]);
+		fetchData(currentPage, perPage, selectchaptersData);
+	}, [token, searchTerm, selectchaptersData]);
 	return (
 		<Layout>
 			<div className="page-body">
@@ -378,20 +432,20 @@ const ListChapter = () => {
 									id="row_create">
 									<DataTable
 										pagination
-										subHeader
-										highlightOnHover
-										striped
+										paginationServer
 										paginationRowsPerPageOptions={[10, 15, 20, 25]}
 										paginationPerPage={perPage}
 										paginationDefaultPage={currentPage}
 										paginationTotalRows={totalRows}
 										onChangeRowsPerPage={handleRowsPerPageChange}
 										onChangePage={handlePageChange}
+										subHeader
+										highlightOnHover
+										striped
 										persistTableHead
 										subHeaderComponent={subHeaderComponentMemo}
 										columns={columns}
-										data={filteredItems || []}
-										className="theme-scrollbar display dataTable"
+										data={filteredItems}
 									/>
 								</div>
 							</CardBody>

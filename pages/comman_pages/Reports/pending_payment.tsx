@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import axios, { AxiosRequestConfig } from "axios";
 import localStorage from "@/utils/localStorage";
 import Layout from "../../Layout/Layout";
-import { Card, CardBody, Col, Input, Label } from "reactstrap";
+import { Card, CardBody, Col, FormGroup, Input, Label } from "reactstrap";
 import DataTable from "react-data-table-component";
 import Btn from "@/pages/components/button";
 import moment from "moment";
@@ -79,7 +79,21 @@ const PendingPayment = () => {
 	const subHeaderComponentMemo = useMemo(() => {
 		return (
 			<>
-				<div
+				<div className="Input-content">
+					<div className="inputcontent">
+						<Input
+							onChange={handleOnChangeSearch}
+							type="search"
+							placeholder="Search By..."
+							value={filterText}
+						/>
+						<i
+							className="fa fa-search"
+							aria-hidden="true"
+							onClick={handleSearchClick}></i>
+					</div>
+				</div>
+				{/* <div
 					id="basic-1_filter"
 					className="dataTables_filter d-flex align-items-center">
 					<Label className="me-2">Search:</Label>
@@ -91,20 +105,25 @@ const PendingPayment = () => {
 					<Btn color="primary" onClick={handleSearchClick} className="ms-2">
 						Search
 					</Btn>
-				</div>
-				<div className="dataTables_filter d-flex align-items-center">
-					<Input
-						type="select"
-						value={selectchaptersData}
-						onChange={handleChapterChange}>
-						<option value="">Chapters</option>
-						{Array?.isArray(chaptersData) &&
-							chaptersData?.map((option: any, index: any) => (
-								<option key={index} value={option.id}>
-									{option?.chapter_name}
-								</option>
-							))}
-					</Input>
+				</div> */}
+				<div className="filter-datas">
+					<div className="date-data">
+						
+						<FormGroup className="form-data">
+							<Input
+								type="select"
+								value={selectchaptersData}
+								onChange={handleChapterChange}>
+								<option value="">Chapters</option>
+								{Array?.isArray(chaptersData) &&
+									chaptersData?.map((option: any, index: any) => (
+										<option key={index} value={option.id}>
+											{option?.chapter_name}
+										</option>
+									))}
+							</Input>
+						</FormGroup>
+					</div>
 				</div>
 			</>
 		);
@@ -144,7 +163,7 @@ const PendingPayment = () => {
 			selectchaptersData(urlParams.get("chapter_id"));
 		}
 	}, [urlParams.get("chapter_id")]);
-  
+
 	const fetchData = async (
 		page: number,
 		pageSize: any,

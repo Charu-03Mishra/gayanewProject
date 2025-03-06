@@ -157,17 +157,24 @@ const MembershipRenew = () => {
 	const subHeaderComponentMemo = useMemo(() => {
 		return (
 			<>
-				<div className="field mt-1">
-					<FormGroup className="me-3">
-						<Label>Date Range:</Label>
-						<DateRangePicker
-							value={dateRange}
-							onChange={handleDateFilter}
-							format="yyyy-MM-dd"
+				<div className="Input-content">
+					<div className="inputcontent">
+						<Input
+							onChange={handleOnChangeSearch}
+							type="search"
+							placeholder="Search By..."
+							value={filterText}
 						/>
-					</FormGroup>
+						<i
+							className="fa fa-search"
+							aria-hidden="true"
+							onClick={handleSearchClick}></i>
+					</div>
 				</div>
-				<div className="dataTables_filter d-flex align-items-center">
+				{/* <div className="field mt-1">
+					
+				</div> */}
+				{/* <div className="dataTables_filter d-flex align-items-center">
 					<Label className="me-2">Search:</Label>
 					<Input
 						onChange={handleOnChangeSearch}
@@ -177,36 +184,46 @@ const MembershipRenew = () => {
 					<Btn color="primary" onClick={handleSearchClick} className="ms-2">
 						Search
 					</Btn>
+				</div> */}
+				<div className="filter-datas">
+					<div className="date-data">
+						<FormGroup className="me-3">
+							<DateRangePicker
+								value={dateRange}
+								onChange={handleDateFilter}
+								format="yyyy-MM-dd"
+								placeholder="Date Range"
+							/>
+						</FormGroup>
+						<FormGroup className="form-data">
+							<Input
+								type="select"
+								value={selectchaptersData}
+								onChange={handleChapterChange}>
+								<option value="">Chapters</option>
+								{Array?.isArray(chaptersData) &&
+									chaptersData?.map((option: any, index: any) => (
+										<option key={index} value={option.id}>
+											{option?.chapter_name}
+										</option>
+									))}
+							</Input>
+						</FormGroup>
+					</div>
 				</div>
-				<div
-					className="dataTables_filter d-flex align-items-center"
-					style={{ paddingLeft: "10px" }}>
-					<Label>Chapter:</Label>
-					<Input
-						type="select"
-						value={selectchaptersData}
-						onChange={handleChapterChange}>
-						<option value="">All</option>
-						{Array?.isArray(chaptersData) &&
-							chaptersData?.map((option: any, index: any) => (
-								<option key={index} value={option.id}>
-									{option?.chapter_name}
-								</option>
-							))}
-					</Input>
+				<div className="showActive">
+					<div className="TotalActive">
+						<span>Total Renewals Today: </span>
+						<span style={{ color: "green" }}>{TotalRenewalsToday}</span>{" "}
+					</div>
+
+					<div className="TotalActive">
+						<span>Total Renewals This Month:</span>{" "}
+						<span style={{ color: "red" }}>{CurrentMonthsToday}</span>
+					</div>
 				</div>
-				<div>
-					<p style={{ fontSize: "15px", fontWeight: "bold" }}>
-						Total Renewals Today:{" "}
-						<span style={{ color: "blue" }}>{TotalRenewalsToday}</span>
-					</p>
-				</div>
-				<div style={{ paddingLeft: "10px" }}>
-					<p style={{ fontSize: "15px", fontWeight: "bold" }}>
-						Total Renewals This Month:{" "}
-						<span style={{ color: "blue" }}>{CurrentMonthsToday}</span>
-					</p>
-				</div>
+
+				
 			</>
 		);
 	}, [

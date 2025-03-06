@@ -136,22 +136,23 @@ const Index = () => {
 	const subHeaderComponentMemo = useMemo(() => {
 		return (
 			<>
-				<div
-					id="basic-1_filter"
-					className="dataTables_filter d-flex align-items-center">
-					<Label className="me-2">Search:</Label>
-					<Input
-						onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-							setFilterText(e.target.value)
-						}
-						type="search"
-						value={filterText}
-					/>
+				<div className="Input-content">
+					<div className="inputcontent">
+						<Input
+							onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+								setFilterText(e.target.value)
+							}
+							type="search"
+							placeholder="Search By..."
+							value={filterText}
+						/>
+					</div>
 				</div>
-				<div style={{ paddingLeft: "10px" }}>
-					<h1 style={{ fontSize: "15px" }}>
-						Total Number Of Vandor is: <span style={{color:"red"}}>{selectVandor}</span>
-					</h1>
+				<div className="showActive">
+					<div className="TotalActive">
+						<span>Total Number Of Vandor is: </span>
+						<span style={{ color: "green" }}>{selectVandor}</span>{" "}
+					</div>
 				</div>
 			</>
 		);

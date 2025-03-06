@@ -27,12 +27,7 @@ const PiChart = ({
 						Authorization: `Bearer ${token}`,
 					},
 				};
-				// try {
-				// 	const response = await axios.get("/api/chapters", config);
-				// 	setChaptersData(response.data.chapters);
-				// } catch (error) {
-				// 	console.error("Error fetching chapters:", error);
-				// }
+				
 			}
 		};
 		fetchChapters();
@@ -88,7 +83,6 @@ const PiChart = ({
 				background: "white",
 				borderRadius: "8px",
 				boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-
 				width: "450px",
 				height: "450px",
 			}}>

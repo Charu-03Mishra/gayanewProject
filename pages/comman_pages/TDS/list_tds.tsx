@@ -258,19 +258,36 @@ const ListTds = () => {
 
 	const subHeaderComponentMemo = useMemo(() => {
 		return (
-			<div
-				id="basic-1_filter"
-				className="dataTables_filter d-flex align-items-center">
-				<Label className="me-2">Search:</Label>
-				<Input
-					onChange={handleOnChangeSearch}
-					type="search"
-					value={filterText}
-				/>
-				<Btn color="primary" onClick={handleSearchClick} className="ms-2">
+			<>
+				{/* <div
+					id="basic-1_filter"
+					className="dataTables_filter d-flex align-items-center">
+					<Label className="me-2">Search:</Label>
+					<Input
+						onChange={handleOnChangeSearch}
+						type="search"
+						value={filterText}
+					/>
+					
+					<Btn color="primary" onClick={handleSearchClick} className="ms-2">
 					Search
 				</Btn>
-			</div>
+				</div> */}
+				<div className="Input-content">
+					<div className="inputcontent">
+						<Input
+							onChange={handleOnChangeSearch}
+							type="search"
+							placeholder="Search By..."
+							value={filterText}
+						/>
+						<i
+							className="fa fa-search"
+							aria-hidden="true"
+							onClick={handleSearchClick}></i>
+					</div>
+				</div>
+			</>
 		);
 	}, [filterText]);
 

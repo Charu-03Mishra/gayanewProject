@@ -533,27 +533,12 @@ const Index: React.FC = () => {
 	const subHeaderComponentMemo = useMemo(() => {
 		return (
 			<>
-				<div
-					className=""
-					style={{
-						display: "flex",
-						justifyContent: "center",
-						alignItems: "center",
-						marginTop: "5px",
-						width: "100%",
-					}}>
-					<div
-						style={{
-							display: "flex",
-							justifyContent: "center",
-							gap: "20px",
-							alignItems: "center",
-
-							width: "400px",
-						}}>
+				<div className="Input-content">
+					<div className="inputcontent">
 						<Input
 							onChange={handleOnChangeSearch}
 							type="search"
+							placeholder="Search By..."
 							value={filterText}
 						/>
 						<i
@@ -562,32 +547,11 @@ const Index: React.FC = () => {
 							onClick={handleSearchClick}></i>
 					</div>
 				</div>
-				<div className="showActive">
-					<div>
-						<div
-							style={{
-								marginBottom: "10px",
-								fontWeight: "bold",
-							}}>
-							Total Active Members:{" "}
-							<span style={{ color: "green" }}>{active}</span>{" "}
-						</div>
-					</div>
-
-					<div
-						style={{
-							marginBottom: "10px",
-							fontWeight: "bold",
-						}}>
-						Total Drop Members: <span style={{ color: "red" }}>{drop}</span>
-					</div>
-				</div>
 				<div className="filter-datas">
 					<div>
 						<div className="date-data">
 							{/* Date Range */}
 							<FormGroup className="form-data">
-								<Label></Label>
 								<DatePicker
 									placeholder="Meeting Fees End Date"
 									onChange={handleDateFilterChange}
@@ -627,8 +591,17 @@ const Index: React.FC = () => {
 						</div>
 					</div>
 				</div>
+				<div className="showActive">
+					<div className="TotalActive">
+						<span>Total Active Members: </span>
+						<span style={{ color: "green" }}>{active}</span>{" "}
+					</div>
 
-				{/* Search Input */}
+					<div className="TotalActive">
+						<span>Total Drop Members:</span>{" "}
+						<span style={{ color: "red" }}>{drop}</span>
+					</div>
+				</div>
 			</>
 		);
 	}, [

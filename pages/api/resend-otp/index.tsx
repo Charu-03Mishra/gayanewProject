@@ -1,39 +1,72 @@
-// pages/api/sendOTP.ts
-
 import { NextApiRequest, NextApiResponse } from 'next';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
-
-// In-memory store for session management (replace this with a database or other server-side store)
-const sessionStore: { [key: string]: any } = {};
+import { connect } from '@/utils/db';
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
-    // Assuming authToken is provided in the request body
-    const authToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZTVjMmJjZmQyNzdhMGI4ZTU1Yjc0NiIsIm5hbWUiOiJCTkkgLSBTdXJhdCIsImFwcE5hbWUiOiJBaVNlbnN5IiwiY2xpZW50SWQiOiI2NWE0ZjhjZDg3ZWU1MTJlMzMxY2ZjMjYiLCJhY3RpdmVQbGFuIjoiTk9ORSIsImlhdCI6MTcyNjMzMzYyOH0.jEnb7dJ3kdm__7AzgeOZtKTdwtIppg7sr_XmR3RYR8k';
     const { phone } = req.body;
 
+    if (!phone) {
+      return res.status(400).json({ success: false, message: 'Phone number is required' });
+    }
+
     // Generate a new OTP
-    const otp = Math.floor(100000 + Math.random() * 900000);
+    const otp = Math.floor(100000 + Math.random() * 900000).toString();
+
+    // Generate an expiry timestamp (Unix format)
+    const expiryTime = Math.floor(Date.now() / 1000) + 600; // 10 minutes from now
 
     // Generate a unique session identifier
     const sessionId = uuidv4();
 
-    // Store OTP in session store
-    sessionStore[sessionId] = { otp };
+    // Connect to database
+    const db = await connect();
 
-    // Make a request to send the OTP via WhatsApp
-    const response = await axios.post('https://app.11za.in/apis/template/sendTemplate', {
-      authToken,
-      sendto: `91${phone}`,
-      originWebsite: 'https://bnigreatersurat.com/',
-      templateName: 'bni_otp',
-      language: 'en',
-      data: [otp.toString()],
+    // Update OTP and expiry in MySQL
+    const updateQuery = `
+      UPDATE members 
+      SET otpverification = JSON_OBJECT('otp', ?, 'exptime', ?) 
+      WHERE primary_number = ?
+    `;
+
+    await db.execute(updateQuery, [otp, expiryTime, phone]);
+
+    console.log(`Stored OTP: ${otp} for ${phone}, Expiry: ${expiryTime}`);
+
+    // Send OTP via WhatsApp
+    const data = JSON.stringify({
+      apiKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZTVjMmJjZmQyNzdhMGI4ZTU1Yjc0NiIsIm5hbWUiOiJCTkkgLSBTdXJhdCIsImFwcE5hbWUiOiJBaVNlbnN5IiwiY2xpZW50SWQiOiI2NWE0ZjhjZDg3ZWU1MTJlMzMxY2ZjMjYiLCJhY3RpdmVQbGFuIjoiTk9ORSIsImlhdCI6MTcyNjMzMzYyOH0.jEnb7dJ3kdm__7AzgeOZtKTdwtIppg7sr_XmR3RYR8k",
+      campaignName: "otp_verification",
+      destination: `91${phone}`,
+      userName: "BNI - Surat",
+      templateParams: [otp],
+      source: "new-landing-page form",
+      media: {},
+      buttons: [
+        {
+          type: "button",
+          sub_type: "url",
+          index: 0,
+          parameters: [{ type: "text", text: otp }]
+        }
+      ],
+      carouselCards: [],
+      location: {},
+      paramsFallbackValue: { FirstName: "user" }
     });
 
-    // Send a response to the client
-    res.status(200).json({ success: true, message: 'OTP sent successfully' });
+    const config = {
+      method: 'post',
+      maxBodyLength: Infinity,
+      url: 'https://backend.api-wa.co/campaign/vartalaap/api/v2',
+      headers: { 'Content-Type': 'application/json' },
+      data: data
+    };
+
+    await axios.request(config);
+
+    res.status(200).json({ success: true, message: 'OTP sent successfully', sessionId });
   } catch (error) {
     res.status(500).json({ success: false, message: 'Internal Server Error' });
   }

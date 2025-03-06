@@ -770,14 +770,15 @@ span.twitter-typeahead {
 	align-items: center;
 	justify-content: center !important;
 	width: 100%;
-	padding: 10px;
+	padding: 15px;
+
 	margin: 10px;
 }
-.showActive{
+.showActive {
 	display: flex;
 	width: 100%;
 	justify-content: end !important;
-	margin-top: 10px;
+	margin-top: 3px;
 	flex-wrap: wrap;
 	gap: 10px;
 }
@@ -786,6 +787,7 @@ span.twitter-typeahead {
 	display: flex;
 	gap: 20px;
 	flex-wrap: wrap;
+	justify-content: center !important;
 }
 .form-data {
 	display: flex;
@@ -798,7 +800,27 @@ span.twitter-typeahead {
 	display: flex;
 	align-items: self-start !important;
 }
+.TotalActive {
+	margin-bottom: 12px;
+}
+.TotalActive span {
+	font-size: 20px;
+}
 
+.Input-content {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	align-items: center;
+	margin: 10px 0 14px 0;
+}
+.inputcontent {
+	display: flex;
+	justify-content: center;
+	width: 400px;
+	align-items: center;
+	gap: 20px;
+}
 // .hMFeQo {
 //     display: flex;
 //     flex-wrap: wrap;
